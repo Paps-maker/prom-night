@@ -660,7 +660,207 @@ height:150px;
 
 </div>
 </section>
+<section class="ultra-menu">
+  <div class="text-center container">
+    <h2 class="menu-title">Prom Night Dining Experience</h2>
+    <p class="menu-subtitle">A curated 3-course gourmet experience designed for elegance</p>
 
+    <!-- MENU I -->
+    <div class="menu-item">
+      <button class="menu-toggle">✦ Menu I</button>
+      <div class="menu-content">
+
+        <h5>SALADS</h5>
+        <p>Chicken Caesar Salad, Beef Sausages Kachumbari, Greek Salad, Pasta Salad with Cocktail Dressing</p>
+
+        <h6>Salad Bar & Dressings</h6>
+        <p>Cocktail, Vinaigrette, Caesar, Balsamic</p>
+
+        <h6>Garnish</h6>
+        <p>Croutons, Capers, Cornichons, Green & Black Olives, Arabic Pickles</p>
+
+        <h5>SOUP</h5>
+        <p>Cream of Chicken served with Bread & Butter</p>
+
+        <h5>MAIN COURSE</h5>
+        <p>Devilled Beef Fillet in Mushroom Sauce, Roasted Chicken Chilli, Pan-Fried Fish with Lemon Caper, Baked Vegetable Lasagne, Naan Bread, Baked Potatoes with Cheese, Potato Brinjal Masala, Creamy Spinach, Vegetable Pilau</p>
+
+        <h5>DESSERTS</h5>
+        <p>Mango Panna Cotta, Assorted Pastries, Berry Mousse, Seasonal Fresh Fruits</p>
+
+      </div>
+    </div>
+
+    <!-- MENU II -->
+    <div class="menu-item">
+      <button class="menu-toggle">✦ Menu II</button>
+      <div class="menu-content">
+
+        <h5>SALADS</h5>
+        <p>Chicken Tikka Kachumbari, Roasted Beef & Pineapple Salad, Sweet Chilli Potato German Salad, Cucumber Dill Mayonnaise</p>
+
+        <h6>Salad Bar & Dressings</h6>
+        <p>Cocktail, Vinaigrette, Caesar, Balsamic</p>
+
+        <h5>SOUP</h5>
+        <p>Italian Minestrone with Bread & Butter</p>
+
+        <h5>MAIN COURSE</h5>
+        <p>Kenyan Beef Stew, Chicken Butter Masala, Grilled Fish Amandine, Balsamic Grilled Exotic Vegetables, Crispy Herb Potato Wedges, Penne Alfredo, Butter Spinach / Ugali, Mixed Vegetable Curry with Chapati, Cumin Rice</p>
+
+        <h5>DESSERTS</h5>
+        <p>Berry Mousse, Red Velvet Cake, Bread & Butter Pudding, Seasonal Fresh Fruits</p>
+
+      </div>
+    </div>
+
+    <!-- MENU III -->
+    <div class="menu-item">
+      <button class="menu-toggle">✦ Menu III</button>
+      <div class="menu-content">
+
+        <h5>SALADS</h5>
+        <p>Shredded Beef & Pineapple Salad, Roasted Chicken with Beans & Cherry Tomatoes, Vegetable Hawaiian Salad, Carrot Raisin Salad</p>
+
+        <h6>Salad Bar & Dressings</h6>
+        <p>Cocktail, Vinaigrette, Caesar, Balsamic</p>
+
+        <h5>SOUP</h5>
+        <p>Kenyan Vegetable Broth with Bread & Butter</p>
+
+        <h5>MAIN COURSE</h5>
+        <p>Braised Beef Short Ribs (Mango BBQ), Chicken Karoga, Swahili Fish Curry, Baked Vegetables, Potato Bhajia, Vegetable Hakka Noodles, Sukuma & Brown Ugali, Yellow Dal, Brown Chapati, Steamed White Rice</p>
+
+        <h5>DESSERTS</h5>
+        <p>Orange Cheesecake, Carrot Cake, Mango Pastry, Seasonal Fresh Fruits</p>
+
+      </div>
+    </div>
+
+    <!-- MENU IV -->
+    <div class="menu-item">
+      <button class="menu-toggle">✦ Menu IV</button>
+      <div class="menu-content">
+
+        <h5>SALADS</h5>
+        <p>Barbecue Beef Sausages with Bell Pepper, Pesto Shrimp Salad, Raw Papaya & Mango Salad, Chinese Kimchi Salad</p>
+
+        <h6>Salad Bar & Dressings</h6>
+        <p>Cocktail, Vinaigrette, Caesar, Balsamic</p>
+
+        <h5>SOUP</h5>
+        <p>Chicken Manchow Soup with Bread & Butter</p>
+
+        <h5>MAIN COURSE</h5>
+        <p>Slow Cooked Goat Stew, Chicken Biryani, Pan-Fried Masala Fish, Asian Greens with Cashew, Crispy Dhania Potatoes, Pasta Arrabbiata, Mbaazi za Nazi / Mahamri, Chana Masala, Poori, Carrot Pilau</p>
+
+        <h5>DESSERTS</h5>
+        <p>Chocolate Mousse, Fruit Custard, Rice & Coconut Milk Pudding, Seasonal Fresh Fruits</p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<style>
+  .ultra-menu {
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+              url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0');
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 100px 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* TITLE */
+.menu-title {
+  font-size: 3rem;
+  color: gold;
+  letter-spacing: 2px;
+}
+
+.menu-subtitle {
+  color: #ddd;
+  margin-bottom: 60px;
+}
+
+/* BUTTON */
+.menu-toggle {
+  width: 100%;
+  background: transparent;
+  border: 1px solid gold;
+  color: gold;
+  padding: 18px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.menu-toggle:hover {
+  background: gold;
+  color: black;
+}
+
+/* CONTENT */
+.menu-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  background: rgba(0,0,0,0.6);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.menu-content.open {
+  max-height: 1000px;
+  padding: 25px;
+}
+
+/* TEXT */
+.menu-content h5 {
+  color: gold;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+.menu-content h6 {
+  color: #ccc;
+  margin-top: 15px;
+}
+
+.menu-content p {
+  color: #eee;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* GOLD LINE */
+.menu-content h5::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: gold;
+  margin: 8px auto;
+}
+</style>
+<script>
+  const toggles = document.querySelectorAll(".menu-toggle");
+
+  toggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const content = btn.nextElementSibling;
+
+      document.querySelectorAll(".menu-content").forEach(c => {
+        if (c !== content) c.classList.remove("open");
+      });
+
+      content.classList.toggle("open");
+    });
+  });
+</script>
 <style>
 /* PROM REGISTRATION SECTION */
 #prom-registration {
@@ -1355,7 +1555,7 @@ box-shadow:0 20px 50px rgba(0,0,0,0.1);
 <div class="row">
 
 <div class="col-12">
-<h2>Ticket Packages</h2>
+<h2>Flash Sale Ticket Packages Available Till September</h2>
 
 <p class="payment-note">
 After making payment via Pesapal or M-Pesa, kindly enter your payment code (e.g. UCHF123ABC) below to receive your ticket.
