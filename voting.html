@@ -1,167 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prom votes</title>
+  <title>Vote | Prom Night 2026</title>
 
   <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/vot1.jpg">
+  <link rel="icon" type="image/png" href="images/pr logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
   <style>
 :root{
-  --primary:#8b008b;       /* deep purple for elegance */
-  --accent:#ff1493;        /* neon pink for glam */
-  --muted:#d1c4e9;         /* soft lavender for text/labels */
-  --card-bg: rgba(255, 255, 255, 0.95); /* semi-glass effect */
-  --glass: rgba(255,255,255,0.2); 
-  --bg-gradient: linear-gradient(135deg,#4b0082,#ff69b4);
+  --bg:#0b0910; --surface:#1a1424; --border:rgba(255,255,255,0.08); --border-gold:rgba(227,183,90,0.35);
+  --gold:#e3b75a; --gold-grad:linear-gradient(135deg,#f6d892 0%,#e3b75a 45%,#b8862f 100%);
+  --rose:#e2457a; --text:#f4eff8; --muted:#a99fb7;
 }
-
-body{
-  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,#fdf6f9 0%, #ffe6f0 100%);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  color: #1f1f2e;
-}
+body{ font-family:"Outfit",system-ui,sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+h1,h5{ font-family:"Playfair Display",Georgia,serif; }
 
 /* Top Bar */
-.topbar{
-  background: linear-gradient(90deg,var(--primary),var(--accent));
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(139,0,139,0.3);
-}
-.topbar .brand{
-  font-weight: 800;
-  letter-spacing: .3px;
-  font-size: 1.25rem;
-}
+.topbar{ position:sticky; top:0; z-index:100; background:rgba(11,9,16,0.85); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+.topbar .brand{ font-family:"Playfair Display",Georgia,serif; font-weight:700; font-size:1.3rem; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:10px; }
+.topbar .brand img{ width:34px; height:34px; border-radius:50%; object-fit:cover; }
+.topbar .brand span{ color:var(--gold); }
 
 /* Hero Section */
 .hero{
-  margin-top: -28px;
-  padding: 60px 20px;
-  border-radius: 16px;
-  color: white;
-  background-image: var(--bg-gradient);
-  background-blend-mode: overlay;
-  box-shadow: 0 12px 40px rgba(139,0,139,0.25);
-  text-align:center;
-  position: relative;
-  overflow: hidden;
+  padding:80px 20px 60px; text-align:center; position:relative; overflow:hidden;
+  background:radial-gradient(ellipse at 50% 0%, rgba(194,24,91,0.28), transparent 65%), var(--bg);
 }
-.hero::after {
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
-  pointer-events:none;
-}
-.hero h1{ 
-  font-size: clamp(24px, 4vw, 42px); 
-  font-weight:900; 
-  margin-bottom:12px; 
-  text-shadow: 2px 2px 12px rgba(0,0,0,0.2);
-}
-.hero p { 
-  opacity: .95; 
-  margin-bottom:0; 
-  font-size:1.1rem;
-}
+.hero .eyebrow{ color:var(--gold); letter-spacing:.22em; text-transform:uppercase; font-size:13px; font-weight:600; margin-bottom:14px; }
+.hero h1{ font-size:clamp(32px,6vw,58px); margin-bottom:14px; }
+.hero h1 em{ background:var(--gold-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.hero p{ color:var(--muted); max-width:620px; margin:0 auto; font-size:1.1rem; }
 
 /* Cards */
-.card { 
-  background: var(--card-bg); 
-  border-radius: 16px; 
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08); 
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-}
+.card{ background:var(--surface); border:1px solid var(--border); border-radius:18px; color:var(--text); transition:border-color .3s, transform .3s; }
+.card:hover{ border-color:var(--border-gold); }
+.text-muted{ color:var(--muted) !important; }
+.form-control{ background:var(--bg); border-color:var(--border); color:var(--text); border-radius:12px; padding:12px 14px; }
+.form-control:focus{ background:var(--bg); color:var(--text); border-color:var(--gold); box-shadow:0 0 0 4px rgba(227,183,90,0.15); }
 
 /* Countdown */
-.countdown { 
-  font-weight: 700; 
-  color: #ff1493; 
-  font-size: 1.2rem; 
-}
+.countdown{ font-family:"Playfair Display",Georgia,serif; font-weight:700; font-size:1.4rem; color:var(--gold); }
 
 /* Candidate Cards */
-.candidate-card { 
-  border-radius:16px; 
-  overflow:hidden; 
-  position: relative;
-}
-.candidate-img { 
-  width:100%; 
-  height:160px; 
-  object-fit:cover; 
-  border-radius:8px; 
-  background: linear-gradient(180deg,#f8f4fc,#f0e6fa); 
-  transition: transform 0.3s;
-}
-.candidate-card:hover .candidate-img {
-  transform: scale(1.05);
-}
-.candidate-meta { 
-  font-size: .95rem; 
-  color:var(--muted); 
-  margin-top:4px;
-}
+.candidate-card{ overflow:hidden; position:relative; }
+.candidate-img{ width:100%; height:180px; object-fit:cover; border-radius:12px; background:#231b30; transition:transform .4s; }
+.candidate-card:hover{ transform:translateY(-4px); }
+.candidate-card:hover .candidate-img{ transform:scale(1.04); }
+.candidate-meta{ font-size:.95rem; color:var(--muted); margin-top:4px; }
 
 /* Buttons */
-.btn-pill { 
-  border-radius: 999px; 
-  padding-left:22px; 
-  padding-right:22px; 
-  background: var(--accent); 
-  color:white;
-  border:none;
-  font-weight:600;
-  transition: background 0.3s;
-}
-.btn-pill:hover{
-  background: var(--primary);
-  color:white;
-}
+.btn-pill{ border-radius:999px; padding-left:22px; padding-right:22px; background:var(--gold-grad); color:#1a1206; border:none; font-weight:600; transition:transform .3s, box-shadow .3s; }
+.btn-pill:hover{ color:#1a1206; transform:translateY(-2px); box-shadow:0 10px 25px rgba(227,183,90,0.35); }
+.btn-outline-secondary.btn-pill{ background:transparent; color:var(--text); border:1px solid var(--border); }
+.btn-back{ border-radius:999px; border:1px solid var(--border-gold); color:#f6d892; padding:8px 18px; font-size:14px; text-decoration:none; }
+.btn-back:hover{ background:rgba(227,183,90,0.12); color:#f6d892; }
 
 /* Footer */
-footer { 
-  margin-top:40px; 
-  padding:20px 0; 
-  text-align:center; 
-  color:#9b87c2; 
-  font-size:.95rem;
-}
+footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-size:.95rem; border-top:1px solid var(--border); }
 
-/* Responsive */
 @media (max-width:767px){
-  .hero { padding:28px 12px; }
-  .candidate-img { height:140px; }
+  .hero{ padding:56px 16px 40px; }
+  .candidate-img{ height:150px; }
 }
 
 /* Active selection */
-.active-select { border: 2px solid var(--accent); }
+.active-select{ border:2px solid var(--gold); }
 </style>
 </head>
 <body>
   <!-- Topbar -->
   <nav class="py-3 topbar">
-    
-    
+    <div class="d-flex align-items-center justify-content-between container">
+      <a class="brand" href="index.html"><img src="images/pr logo.png" alt="">PROM<span>NIGHT</span></a>
+      <a class="btn-back" href="index.html"><i class="bi bi-arrow-left"></i> Back to site</a>
+    </div>
   </nav>
 
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <h1>Participate in a fair & transparent election</h1>
-      <p>Register, verify, then log in with your ID & phone to cast one secure vote. Live results are published here.</p>
+      <div class="eyebrow">Prom King &amp; Queen</div>
+      <h1>Cast your <em>vote</em></h1>
+      <p>Verify with your payment code and phone number to cast one secure vote per category. Live results are published below.</p>
     </div>
   </header>
 
@@ -270,7 +198,7 @@ footer {
 
   <footer>
     <div class="container small">
-      © National Voting Portal — Transparency & Security. For demonstration only.
+      &copy; 2026 Prom Night &middot; Boma Inn, Eldoret
     </div>
   </footer>
 
