@@ -125,7 +125,7 @@ footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-
               <div id="countdownText" class="countdown">Loading...</div>
               <div class="text-muted small">Voting start time is set by the administrator.</div>
             </div>
-            <div class="text-end small"><div id="electionRange">—</div></div>
+            <div class="text-end small"><div id="electionRange"></div></div>
           </div>
         </div>
       </section>
@@ -188,7 +188,7 @@ footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-
         <div class="p-4 card">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h5 class="mb-0">Live Results</h5>
-            <div class="text-muted small">Updated in real-time</div>
+            <div class="text-muted small">Updated in real time</div>
           </div>
           <div id="resultsArea" class="row gy-3"></div>
         </div>
@@ -251,7 +251,7 @@ footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-
         votingStateBadge.textContent = 'Not configured';
         votingStateBadge.className = 'badge bg-secondary';
         countdownText.textContent = 'Election date not set';
-        electionRange.textContent = '—';
+        electionRange.textContent = '';
         return;
       }
       const data = doc.data();
@@ -259,7 +259,7 @@ footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-
       const start = (data.start && data.start.toDate) ? data.start.toDate() : new Date(data.start);
       const end = (data.end && data.end.toDate) ? data.end.toDate() : new Date(data.end);
       election = { ...data, _start: start, _end: end };
-      electionRange.textContent = `${start.toLocaleString()} — ${end.toLocaleString()}`;
+      electionRange.textContent = `${start.toLocaleString()} to ${end.toLocaleString()}`;
       updateCountdown();
     });
 
@@ -421,7 +421,7 @@ footer{ margin-top:40px; padding:28px 0; text-align:center; color:#6f6680; font-
         // verified
         currentVoterId = id;
         currentVoterDoc = data;
-        loginMessage.textContent = 'Verified — you can now select a candidate and cast your vote.';
+        loginMessage.textContent = 'Verified. You can now select a candidate and cast your vote.';
         loginMessage.className = 'text-success small';
         btnLogout.style.display = 'inline-block';
         voterLoginForm.style.display = 'none';

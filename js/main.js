@@ -55,6 +55,24 @@
     if (d.open) menus.forEach(o => { if (o !== d) o.open = false; });
   }));
 
+  // COUNTDOWN (shown only once data-date is set)
+  const countdown = document.getElementById("countdown");
+  const eventTime = Date.parse(countdown.dataset.date);
+  if (!isNaN(eventTime)) {
+    const units = {};
+    countdown.querySelectorAll("[data-unit]").forEach(el => { units[el.dataset.unit] = el; });
+    const tick = () => {
+      const s = Math.max(0, Math.floor((eventTime - Date.now()) / 1000));
+      units.days.textContent = Math.floor(s / 86400);
+      units.hours.textContent = String(Math.floor(s / 3600) % 24).padStart(2, "0");
+      units.mins.textContent = String(Math.floor(s / 60) % 60).padStart(2, "0");
+      units.secs.textContent = String(s % 60).padStart(2, "0");
+    };
+    tick();
+    setInterval(tick, 1000);
+    countdown.hidden = false;
+  }
+
   // GALLERY LIGHTBOX
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
