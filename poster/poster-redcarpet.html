@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Red Carpet Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="../css/bootstrap-icons.css" rel="stylesheet">
+<link href="base.css" rel="stylesheet">
+<style>
+  .page { width: 1080px; height: 1350px; color: #fff; background: #4a0613; }
+  .cover { background-image: url("../images/ball.jpg"); bottom: 38%; filter: sepia(.35) saturate(1.6) hue-rotate(-25deg) brightness(.85); }
+  .layer { background: linear-gradient(180deg, rgba(74, 6, 19, .15) 0%, rgba(74, 6, 19, .35) 35%, #4a0613 62%); }
+  .glow { position: absolute; left: 50%; top: 52%; width: 1100px; height: 500px; transform: translate(-50%, -50%); background: radial-gradient(ellipse, rgba(255, 70, 100, .35), transparent 65%); z-index: -1; }
+
+  .content { position: relative; height: 100%; padding: 70px 80px 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .badge { padding: 10px 26px; border-radius: 999px; background: rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .35); font-size: 18px; letter-spacing: .35em; text-transform: uppercase; font-weight: 600; backdrop-filter: blur(6px); }
+
+  .walk { margin-top: 330px; font-size: 30px; font-weight: 300; letter-spacing: .5em; text-transform: uppercase; color: #ffd0d8; }
+  h1 { font-family: "Outfit", sans-serif; font-weight: 800; font-size: 168px; line-height: .9; letter-spacing: .04em; text-transform: uppercase; text-shadow: 0 10px 40px rgba(0, 0, 0, .45); }
+  .year { font-size: 74px; font-style: italic; margin-top: 4px; }
+
+  .when { margin-top: 30px; display: flex; gap: 0; border-top: 1px solid rgba(255, 255, 255, .3); border-bottom: 1px solid rgba(255, 255, 255, .3); }
+  .when div { padding: 18px 34px; font-size: 25px; font-weight: 500; }
+  .when div + div { border-left: 1px solid rgba(255, 255, 255, .3); }
+  .when i { color: #f6d892; margin-right: 10px; }
+
+  .stub {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 330px;
+    background: #fbf3e6; color: #2a0710;
+    display: grid; grid-template-columns: 1fr 260px;
+  }
+  .stub::before {
+    content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 28px;
+    background: radial-gradient(circle at 14px 14px, #4a0613 10px, transparent 11px) 0 0 / 40px 28px repeat-x;
+  }
+  .prices { padding: 40px 0 0 80px; text-align: left; }
+  .prices h3 { font-size: 16px; letter-spacing: .35em; text-transform: uppercase; color: #a0122f; font-weight: 700; margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 60px; justify-content: start; }
+  .grid div { font-size: 22px; font-weight: 500; }
+  .grid b { display: block; font-family: "Playfair Display", serif; font-size: 32px; line-height: 1.2; color: #a0122f; }
+  .tear { border-left: 3px dotted rgba(42, 7, 16, .35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .tear .qr { padding: 0; }
+  .tear .qr img { width: 150px; height: 150px; }
+  .tear span { font-size: 14px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; color: #a0122f; }
+  .site { position: absolute; left: 80px; bottom: 22px; font-size: 18px; color: #6b4650; }
+  .site i { color: #a0122f; margin-right: 6px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="cover"></div>
+  <div class="layer"></div>
+  <div class="glow"></div>
+
+  <div class="content">
+    <div class="badge">Boma Inn &middot; Eldoret</div>
+    <div class="walk">Walk the</div>
+    <h1>Red<br>Carpet</h1>
+    <div class="year serif gold-text">Prom Night 2026</div>
+
+    <div class="when">
+      <div><i class="bi-calendar-event"></i>Thursday, 10 December</div>
+      <div><i class="bi-clock"></i>6:00 PM</div>
+    </div>
+  </div>
+
+  <div class="stub">
+    <div class="prices">
+      <h3>Ticket packages</h3>
+      <div class="grid">
+        <div>Individual<b>KSh 3,500</b></div>
+        <div>Individual + Transport<b>KSh 5,500</b></div>
+        <div>Couple<b>KSh 6,000</b></div>
+        <div>Couple + Transport<b>KSh 9,000</b></div>
+      </div>
+    </div>
+    <div class="tear">
+      <div class="qr"><img src="../images/zenlipa-qr.png" alt=""></div>
+      <span>Scan to book</span>
+    </div>
+    <div class="site"><i class="bi-globe2"></i>prom2026.online &nbsp;&middot;&nbsp; <i class="bi-telephone"></i>0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146 &nbsp;&middot;&nbsp; <b style="color:#a0122f">#PromNightEldoret2026</b></div>
+  </div>
+</div>
+</body>
+</html>

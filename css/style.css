@@ -189,9 +189,11 @@ p { margin: 0 0 1em; }
   padding: 8px 14px;
   font-size: 15px;
   color: var(--text-muted);
+  white-space: nowrap;
   border-radius: 999px;
   transition: color 0.25s, background 0.25s;
 }
+@media (max-width: 1180px) { .nav-links a { padding: 8px 10px; font-size: 14px; } }
 .nav-links a:hover,
 .nav-links a.active { color: var(--text); background: rgba(255, 255, 255, 0.06); }
 
@@ -210,7 +212,7 @@ p { margin: 0 0 1em; }
   justify-content: center;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1060px) {
   .nav-toggle { display: inline-flex; }
   .nav-links {
     position: fixed;
@@ -805,6 +807,11 @@ textarea.input { resize: vertical; min-height: 130px; }
 }
 .vote-banner h3 { font-size: 24px; margin: 0 0 4px; }
 .vote-banner p { margin: 0; color: #e0d4e8; }
+.share-banner {
+  margin-top: 30px;
+  background: linear-gradient(120deg, rgba(227, 183, 90, 0.18), rgba(226, 69, 122, 0.1));
+  border-color: var(--border-gold);
+}
 
 /*---------- Contact ----------*/
 .contact-grid {
@@ -1031,6 +1038,13 @@ textarea.input { resize: vertical; min-height: 130px; }
   font-variant-numeric: tabular-nums;
 }
 .countdown span { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+.cal-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: -30px 0 50px;
+}
 @media (max-width: 480px) {
   .countdown { gap: 8px; }
   .countdown div { min-width: 0; flex: 1; padding: 12px 4px; }
@@ -1087,3 +1101,5 @@ textarea.input { resize: vertical; min-height: 130px; }
 @media (max-width: 400px) {
   .countdown span { letter-spacing: 0.05em; font-size: 11px; }
 }
+
+.footer .hashtag { color: var(--gold-light); font-weight: 600; letter-spacing: 0.04em; }

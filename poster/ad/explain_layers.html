@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card Maker Explainer Layers</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<style>
+  /* Transparent overlays for the card maker explainer, rendered one at a time (explain_layers.html#c1) */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; width: 1080px; height: 1920px; overflow: hidden; font-family: "Outfit", sans-serif; color: #fff; }
+  .layer { position: absolute; left: 0; right: 0; display: none; flex-direction: column; align-items: center; text-align: center; padding: 0 70px; }
+  .layer.on { display: flex; }
+  .gold { background: linear-gradient(135deg, #fff1c9 0%, #e3b75a 45%, #b8862f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .cap { top: 130px; }
+  .cap .step { padding: 10px 26px; border-radius: 999px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; font-size: 26px; font-weight: 800; letter-spacing: .25em; text-transform: uppercase; padding-left: calc(26px + .25em); }
+  .cap h2 { margin-top: 26px; font-family: "Playfair Display", serif; font-size: 84px; font-weight: 800; line-height: 1.05; }
+  .cap h2.small { font-size: 70px; }
+
+  #share { top: 1400px; }
+  .sheet { width: 940px; padding: 34px 40px 44px; border-radius: 40px; background: rgba(26, 20, 36, .96); border: 2px solid rgba(227, 183, 90, .5); box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
+  .sheet p { font-size: 28px; color: #cbbfd8; margin-bottom: 26px; }
+  .apps { display: flex; justify-content: space-around; }
+  .apps div { display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 26px; font-weight: 600; }
+  .apps span { width: 130px; height: 130px; border-radius: 34px; display: grid; place-items: center; font-size: 66px; color: #fff; }
+  .wa { background: #25d366; }
+  .ig { background: linear-gradient(135deg, #feda75, #fa7e1e 25%, #d62976 55%, #962fbf 80%, #4f5bd5); }
+  .tt { background: #111; border: 2px solid #333; }
+  .st { background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206 !important; }
+
+  .poll { top: 1080px; }
+  .sticker { width: 520px; border-radius: 28px; background: #fff; color: #111; padding: 26px 26px 22px; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); transform: rotate(-3deg); }
+  .sticker h4 { font-size: 30px; font-weight: 800; margin-bottom: 18px; }
+  .sticker .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sticker .opts div { padding: 20px 10px; border-radius: 16px; background: #f1f1f4; font-size: 28px; font-weight: 700; }
+  .sticker .opts div:first-child { color: #c2185b; }
+  .sticker .opts div:last-child { color: #7a4fd1; }
+  .sticker.q { background: linear-gradient(135deg, #ff6b9a, #c2185b); color: #fff; }
+  .sticker.q .field { padding: 22px; border-radius: 16px; background: rgba(255, 255, 255, .22); font-size: 30px; font-weight: 600; text-align: left; }
+
+  #calok { top: 1480px; }
+  .toast { display: flex; align-items: center; gap: 24px; width: 860px; padding: 28px 34px; border-radius: 32px; background: #fff; color: #111; text-align: left; box-shadow: 0 24px 70px rgba(0, 0, 0, .55); }
+  .toast span { width: 84px; height: 84px; flex: none; border-radius: 22px; display: grid; place-items: center; background: #1fa463; color: #fff; font-size: 48px; }
+  .toast b { display: block; font-size: 34px; }
+  .toast small { display: block; margin-top: 4px; font-size: 26px; color: #555; }
+
+  #cta { top: 1430px; }
+  #cta .btn { display: inline-flex; align-items: center; gap: 16px; padding: 30px 56px; border-radius: 999px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; font-size: 44px; font-weight: 800; box-shadow: 0 20px 60px rgba(227, 183, 90, .35); }
+  #cta p { margin-top: 30px; font-size: 34px; color: #e9dcf5; }
+  #cta p b { color: #f6d892; }
+</style>
+</head>
+<body>
+  <div class="layer cap" id="c1"><div class="step">Card maker</div><h2>Make your own<br><span class="gold">Prom Night card</span></h2></div>
+  <div class="layer cap" id="c2"><div class="step">Step 1</div><h2>Open<br><span class="gold">prom2026.online</span></h2></div>
+  <div class="layer cap" id="c3"><div class="step">Step 2</div><h2>Pick your<br><span class="gold">card</span></h2></div>
+  <div class="layer cap" id="c4"><div class="step">Step 3</div><h2>Type a<br><span class="gold">name</span></h2></div>
+  <div class="layer cap" id="c5"><div class="step">Step 4</div><h2>Tap<br><span class="gold">Share card</span></h2></div>
+  <div class="layer cap" id="c6"><div class="step">I&rsquo;m going</div><h2>Got your ticket?<br><span class="gold">Tell everyone</span></h2></div>
+  <div class="layer cap" id="c7"><div class="step">Vote for me</div><h2 class="small">Running for<br><span class="gold">Mr or Miss Prom?</span></h2></div>
+  <div class="layer cap" id="c9"><div class="step">Story templates</div><h2>Add a<br><span class="gold">poll sticker</span></h2></div>
+  <div class="layer cap" id="c10"><div class="step">Our hashtag</div><h2 class="small">#PromNight<br><span class="gold">Eldoret2026</span></h2></div>
+  <div class="layer cap" id="c11"><div class="step">Save the date</div><h2>Add it to your<br><span class="gold">calendar</span></h2></div>
+  <div class="layer cap" id="c8"><div class="step">Make yours today</div><h2>See you on the<br><span class="gold">red carpet</span></h2></div>
+
+  <div class="layer" id="share">
+    <div class="sheet">
+      <p>Share your card</p>
+      <div class="apps">
+        <div><span class="wa"><i class="bi-whatsapp"></i></span>WhatsApp</div>
+        <div><span class="ig"><i class="bi-instagram"></i></span>Instagram</div>
+        <div><span class="tt"><i class="bi-tiktok"></i></span>TikTok</div>
+        <div><span class="st"><i class="bi-download"></i></span>Save</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layer poll" id="poll1"><div class="sticker"><h4>What are you wearing?</h4><div class="opts"><div>Gown</div><div>Suit</div></div></div></div>
+  <div class="layer poll" id="poll2"><div class="sticker"><h4>Your dress code?</h4><div class="opts"><div>Red Carpet</div><div>Royal Night</div></div></div></div>
+  <div class="layer poll" id="poll3"><div class="sticker q"><h4>Who&rsquo;s your prom date?</h4><div class="field">@ tag them here</div></div></div>
+
+  <div class="layer" id="calok">
+    <div class="toast"><span><i class="bi-calendar-check"></i></span><div><b>Prom Night 2026 added</b><small>Thu 10 Dec, 6:00 PM &middot; Boma Inn, Eldoret<br>Reminder 1 day before</small></div></div>
+  </div>
+
+  <div class="layer" id="cta">
+    <div class="btn"><i class="bi-envelope-heart"></i>Make an Invite Card</div>
+    <p>at <b>prom2026.online</b></p>
+  </div>
+<script>
+  const el = document.getElementById(location.hash.slice(1));
+  if (el) el.classList.add("on");
+</script>
+</body>
+</html>

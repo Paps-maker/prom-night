@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Countdown</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+<link href="../css/bootstrap-icons.css" rel="stylesheet">
+<link href="base.css" rel="stylesheet">
+<style>
+  /* Render with the number of days left in the URL, e.g. countdown.html#40 */
+  .page { width: 1080px; height: 1350px; color: #fff; background: var(--bg); }
+  .cover { bottom: 42%; background-position: center 35%; }
+  .layer {
+    background:
+      radial-gradient(ellipse at 50% 48%, var(--glow), transparent 55%),
+      linear-gradient(180deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .15) 25%, var(--bg-a) 44%, var(--bg) 56%);
+  }
+
+  .content { position: relative; height: 100%; padding: 64px 80px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  .top { width: 100%; display: flex; align-items: center; gap: 16px; }
+  .top img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; }
+  .top .brand { font-size: 20px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
+  .top .where { margin-left: auto; padding: 10px 22px; border-radius: 999px; background: rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .3); font-size: 18px; font-weight: 500; backdrop-filter: blur(6px); }
+  .top .where i { color: var(--accent); margin-right: 8px; }
+
+  .kicker { margin-top: 250px; padding: 10px 26px; border-radius: 999px; background: var(--grad); color: var(--on-accent); font-size: 20px; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(0, 0, 0, .4); }
+
+  .num { font-family: "Playfair Display", serif; font-weight: 900; font-size: 380px; line-height: .82; margin-top: 18px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 14px 40px rgba(0, 0, 0, .55)); }
+  .num.word { font-size: 230px; font-style: italic; font-weight: 800; line-height: 1; margin-top: 30px; }
+  .label { font-size: 44px; font-weight: 300; letter-spacing: .55em; text-transform: uppercase; padding-left: .55em; margin-top: 4px; }
+
+  .tag { margin-top: 26px; font-family: "Playfair Display", serif; font-style: italic; font-weight: 600; font-size: 46px; color: var(--soft); }
+
+  .when { margin-top: 30px; display: flex; border-top: 1px solid rgba(255, 255, 255, .25); border-bottom: 1px solid rgba(255, 255, 255, .25); }
+  .when div { padding: 16px 30px; font-size: 24px; font-weight: 500; }
+  .when div + div { border-left: 1px solid rgba(255, 255, 255, .25); }
+  .when i { color: var(--accent); margin-right: 10px; }
+
+  .progress { margin-top: 40px; width: 640px; }
+  .progress .bar { height: 10px; border-radius: 999px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+  .progress .bar b { display: block; height: 100%; border-radius: 999px; background: var(--grad); }
+  .progress small { display: flex; justify-content: space-between; margin-top: 10px; font-size: 15px; letter-spacing: .25em; text-transform: uppercase; color: rgba(255, 255, 255, .55); font-weight: 600; }
+
+  .foot { margin-top: auto; display: flex; align-items: center; gap: 28px; text-align: left; }
+  .foot .qr img { width: 132px; height: 132px; }
+  .foot .t1 { font-size: 15px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .foot .t2 { font-family: "Playfair Display", serif; font-size: 38px; font-weight: 700; margin: 2px 0 6px; }
+  .foot .t3 { font-size: 19px; color: rgba(255, 255, 255, .7); }
+
+  /* Colour themes, rotated day by day */
+  .gold    { --bg: #0e0a14; --bg-a: rgba(14, 10, 20, .8);  --glow: rgba(227, 183, 90, .22); --accent: #e3b75a; --soft: #f6e3b8; --on-accent: #1a1206;
+             --grad: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); }
+  .rose    { --bg: #14070e; --bg-a: rgba(20, 7, 14, .8);   --glow: rgba(226, 69, 122, .3);  --accent: #ff7aa5; --soft: #ffd3e1; --on-accent: #fff;
+             --grad: linear-gradient(135deg, #ffc2d5, #ff6b9a 45%, #c2185b); }
+  .lilac   { --bg: #0d0918; --bg-a: rgba(13, 9, 24, .8);   --glow: rgba(160, 120, 255, .28); --accent: #c9a7ff; --soft: #e6d9ff; --on-accent: #1b0f33;
+             --grad: linear-gradient(135deg, #f0e6ff, #b48cff 50%, #7a4fd1); }
+  .crimson { --bg: #1a050b; --bg-a: rgba(26, 5, 11, .8);   --glow: rgba(255, 70, 100, .3);  --accent: #f6d892; --soft: #ffd0d8; --on-accent: #1a1206;
+             --grad: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <div class="hashtag">#PromNightEldoret2026</div>
+  <div class="cover" id="photo"></div>
+  <div class="layer"></div>
+  <span class="spark" style="top:180px;left:140px"></span><span class="spark" style="top:300px;left:930px"></span><span class="spark" style="top:520px;left:110px;transform:scale(.6)"></span><span class="spark" style="top:600px;left:960px;transform:scale(.7)"></span>
+
+  <div class="content">
+    <div class="top">
+      <img src="../images/pr logo.png" alt="">
+      <div class="brand">Prom Night 2026</div>
+      <div class="where"><i class="bi-geo-alt-fill"></i>Boma Inn, Eldoret</div>
+    </div>
+
+    <div class="kicker" id="kicker">Countdown</div>
+    <div class="num" id="num"></div>
+    <div class="label" id="label"></div>
+    <div class="tag" id="tag"></div>
+
+    <div class="when">
+      <div><i class="bi-calendar-event"></i>Thursday, 10 December</div>
+      <div><i class="bi-clock"></i>6:00 PM</div>
+    </div>
+
+    <div class="progress">
+      <div class="bar"><b id="bar"></b></div>
+      <small><span>Tickets open</span><span>Prom Night</span></small>
+    </div>
+
+    <div class="foot">
+      <div class="qr"><img src="../images/zenlipa-qr.png" alt=""></div>
+      <div>
+        <div class="t1" id="cta">Scan to get your ticket</div>
+        <div class="t2">From KSh 3,500</div>
+        <div class="t3">prom2026.online &nbsp;&middot;&nbsp; 0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const START = 40;
+  const days = Math.max(0, Math.min(START, parseInt(location.hash.slice(1), 10) || 0));
+
+  // Days left: [colour theme, Pexels photo id in images/countdown]
+  const PHOTOS = {
+    40: ["gold", "35764838"], 39: ["lilac", "5389619"], 38: ["gold", "17028568"], 37: ["rose", "29069190"], 36: ["crimson", "16935969"],
+    35: ["lilac", "38097863"], 34: ["gold", "12932653"], 33: ["lilac", "5706059"], 32: ["gold", "31091958"], 31: ["crimson", "1481313"],
+    30: ["gold", "29703684"], 29: ["gold", "14916317"], 28: ["lilac", "14910146"], 27: ["crimson", "18294723"], 26: ["lilac", "20029097"],
+    25: ["gold", "170366"], 24: ["rose", "14897611"], 23: ["rose", "12311203"], 22: ["gold", "21928749"], 21: ["gold", "5669252"],
+    20: ["lilac", "38446275"], 19: ["crimson", "1234390"], 18: ["lilac", "10611756"], 17: ["lilac", "16014585"], 16: ["gold", "28059309"],
+    15: ["rose", "20283373"], 14: ["rose", "2347483"], 13: ["crimson", "30767993"], 12: ["gold", "35764836"], 11: ["gold", "28247494"],
+    10: ["lilac", "36028895"], 9: ["gold", "17600955"], 8: ["crimson", "29585256"], 7: ["gold", "4992827"], 6: ["rose", "8935232"],
+    5: ["gold", "3597632"], 4: ["gold", "12688995"], 3: ["crimson", "30151915"], 2: ["gold", "7209194"], 1: ["rose", "10359381"],
+    0: ["gold", "31196839"],
+  };
+  const MILESTONES = {
+    40: ["Countdown begins", "The most glamorous night of the year"],
+    30: ["One month", "Thirty days until the red carpet"],
+    21: ["Three weeks", "Time to plan that outfit"],
+    14: ["Two weeks", "Have you booked your seat yet?"],
+    10: ["Ten days", "Seats are filling up fast"],
+    7:  ["One week", "Seven days to Prom Night"],
+    5:  ["Final countdown", "Five days to go"],
+    3:  ["Final three days", "Last call for tickets"],
+    2:  ["Almost here", "Get your outfit pressed"],
+    1:  ["Tomorrow night", "See you on the red carpet"],
+  };
+  const LINES = [
+    "Dinner, dancing and the crown",
+    "Who will be Mr & Miss Prom?",
+    "The red carpet awaits",
+    "Grab your plus one",
+    "Dress to impress",
+    "Book your seat before it sells out",
+    "Three course dinner, live DJ",
+    "Your night to shine",
+  ];
+
+  const $ = id => document.getElementById(id);
+  const [theme, photo] = PHOTOS[days];
+  document.body.className = theme;
+  $("photo").style.backgroundImage = `url("../images/countdown/pexels-${photo}.jpg")`;
+  $("bar").style.width = `${((START - days) / START) * 100}%`;
+
+  if (days === 0) {
+    $("kicker").textContent = "It's Prom Night";
+    $("num").textContent = "Tonight";
+    $("num").classList.add("word");
+    $("label").textContent = "Doors open 6 PM";
+    $("tag").textContent = "See you on the red carpet";
+    $("cta").textContent = "Last chance, scan for tickets";
+  } else {
+    const [kicker, tag] = MILESTONES[days] || ["Countdown", LINES[days % LINES.length]];
+    $("kicker").textContent = kicker;
+    $("num").textContent = days;
+    $("label").textContent = days === 1 ? "Day to go" : "Days to go";
+    $("tag").textContent = tag;
+  }
+</script>
+</body>
+</html>

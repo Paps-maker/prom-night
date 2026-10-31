@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Photo Booth</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
+<style>
+  /* photobooth.html#frame  A1 landscape hand held frame (cut out the middle)
+     photobooth.html#props  A4 sheets of signs to glue onto sticks
+     photobooth.html#overlay  1080x1350 transparent frame for photos taken on the night */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff; font-family: "Outfit", sans-serif; }
+  .view { display: none; }
+  .view.on { display: block; }
+
+  /* Frame, designed at 1600x1131 and zoomed to A1 */
+  .frame-sheet { width: 1600px; height: 1131px; zoom: 1.98; position: relative; overflow: hidden; background: #0e0a14; }
+  .frame-sheet .hole { position: absolute; left: 150px; right: 150px; top: 170px; bottom: 190px; background: #fff; border-radius: 40px; outline: 4px solid #e3b75a; outline-offset: 10px; display: grid; place-items: center; }
+  .frame-sheet .hole span { font-size: 26px; letter-spacing: .3em; color: #bbb; text-transform: uppercase; border: 3px dashed #ccc; padding: 18px 30px; border-radius: 14px; }
+  .frame-sheet .head { position: absolute; top: 34px; left: 0; right: 0; text-align: center; color: #fff; }
+  .frame-sheet .head b { font-family: "Playfair Display", serif; font-size: 100px; font-weight: 900; line-height: 1; }
+  .frame-sheet .foot { position: absolute; bottom: 52px; left: 0; right: 0; display: flex; justify-content: center; gap: 40px; color: #fff; font-size: 40px; font-weight: 600; }
+  .frame-sheet .foot i { color: #e3b75a; margin-right: 12px; }
+  .frame-sheet .foot .tag { color: #f6d892; }
+  .corner { position: absolute; width: 90px; height: 90px; border: 6px solid #e3b75a; }
+  .c1 { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+  .c2 { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+  .c3 { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+  .c4 { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+
+  /* Props, two signs per A4 page */
+  .prop-page { width: 794px; height: 1123px; padding: 50px; display: grid; grid-template-rows: 1fr 1fr; gap: 50px; break-after: page; }
+  .sign { position: relative; border-radius: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; background: #0e0a14; border: 8px solid #e3b75a; overflow: hidden; }
+  .sign i { font-size: 110px; color: #e3b75a; line-height: 1; }
+  .sign b { font-family: "Playfair Display", serif; font-size: 96px; font-weight: 900; line-height: 1; margin-top: 10px; }
+  .sign small { margin-top: 16px; font-size: 24px; letter-spacing: .3em; text-transform: uppercase; color: #f6d892; font-weight: 700; }
+  .sign.rose { background: linear-gradient(160deg, #c2185b, #6d0f2a); border-color: #ffc2d5; }
+  .sign.rose i { color: #ffd6e4; }
+  .sign.gold { background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; border-color: #1a1206; }
+  .sign.gold i, .sign.gold small { color: #1a1206; }
+  .sign .script { font-family: "Great Vibes", cursive; font-size: 110px; color: #ffd0d8; line-height: 1; }
+  .sign .cut { position: absolute; bottom: 14px; font-size: 14px; letter-spacing: .2em; color: rgba(255, 255, 255, .45); text-transform: uppercase; }
+  .sign.gold .cut { color: rgba(26, 18, 6, .5); }
+
+  /* Overlay */
+  .overlay { width: 1080px; height: 1350px; position: relative; background: transparent; }
+  .overlay .band { position: absolute; inset: 0; border: 36px solid transparent; }
+  .overlay .top { position: absolute; top: 0; left: 0; right: 0; height: 170px; background: linear-gradient(180deg, rgba(14, 10, 20, .92), rgba(14, 10, 20, 0)); display: flex; align-items: flex-start; justify-content: center; padding-top: 44px; color: #fff; }
+  .overlay .top b { font-family: "Playfair Display", serif; font-size: 64px; font-weight: 900; }
+  .overlay .bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(0deg, rgba(14, 10, 20, .95), rgba(14, 10, 20, 0)); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 50px; color: #fff; font-size: 30px; font-weight: 600; }
+  .overlay .bottom span { color: #f6d892; font-size: 26px; letter-spacing: .1em; margin-top: 6px; }
+  .overlay .line { position: absolute; inset: 28px; border: 3px solid rgba(227, 183, 90, .9); border-radius: 26px; }
+</style>
+</head>
+<body>
+  <div class="view" id="frame">
+    <div class="frame-sheet">
+      <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+      <div class="head"><b class="gold-text">PROM NIGHT 2026</b></div>
+      <div class="hole"><span>Cut out this area</span></div>
+      <div class="foot"><div><i class="bi-geo-alt-fill"></i>Boma Inn, Eldoret</div><div class="tag">#PromNightEldoret2026</div></div>
+    </div>
+  </div>
+
+  <div class="view" id="props">
+    <div class="prop-page">
+      <div class="sign gold"><i class="bi-gem"></i><b>Prom King</b><small>Prom Night 2026</small><span class="cut">Cut out and glue to a stick</span></div>
+      <div class="sign rose"><i class="bi-gem"></i><b>Prom Queen</b><small>Prom Night 2026</small><span class="cut">Cut out and glue to a stick</span></div>
+    </div>
+    <div class="prop-page">
+      <div class="sign"><i class="bi-stars"></i><b>Best Dressed</b><small>Prom Night 2026</small><span class="cut">Cut out and glue to a stick</span></div>
+      <div class="sign rose"><div class="script">I said yes</div><b>to Prom!</b><small>#PromNightEldoret2026</small><span class="cut">Cut out and glue to a stick</span></div>
+    </div>
+    <div class="prop-page">
+      <div class="sign"><i class="bi-music-note-beamed"></i><b>Dancing Queen</b><small>Prom Night 2026</small><span class="cut">Cut out and glue to a stick</span></div>
+      <div class="sign gold"><i class="bi-camera"></i><b style="font-size:62px">#PromNight<br>Eldoret2026</b><small>Tag us in your photos</small><span class="cut">Cut out and glue to a stick</span></div>
+    </div>
+  </div>
+
+  <div class="view" id="overlay">
+    <div class="overlay">
+      <div class="top"><b class="gold-text">PROM NIGHT 2026</b></div>
+      <div class="bottom">Boma Inn, Eldoret<span>#PromNightEldoret2026</span></div>
+      <div class="line"></div>
+    </div>
+  </div>
+<script>
+  const view = location.hash.slice(1) || "frame";
+  document.getElementById(view).classList.add("on");
+  const style = document.createElement("style");
+  style.textContent = { frame: "@page { size: 841mm 594mm; margin: 0; } html, body { background: #0e0a14; height: 100%; overflow: hidden; }", props: "@page { size: A4; margin: 0; }", overlay: "html, body { background: transparent; }" }[view];
+  document.head.appendChild(style);
+</script>
+</body>
+</html>

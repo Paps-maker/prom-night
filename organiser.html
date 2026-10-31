@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b0910">
+    <title>Organiser Tools | Prom Night 2026</title>
+
+    <link rel="icon" type="image/png" href="images/pr logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .maker-top { position: sticky; top: 0; z-index: 10; background: rgba(11, 9, 16, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .maker-top .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .maker { padding: 40px 0 80px; }
+        .maker .section-head { margin-bottom: 30px; }
+        .maker-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; align-items: start; }
+        .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 22px; }
+        .tab { padding: 14px 8px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .tab i { font-size: 22px; color: var(--gold); }
+        .tab[aria-selected="true"] { border-color: var(--gold); background: rgba(227, 183, 90, .12); color: var(--text); }
+        .panel[hidden] { display: none; }
+        select.input { appearance: none; }
+        .actions { display: grid; gap: 10px; margin-top: 8px; }
+        .hint { font-size: 14px; color: var(--text-dim); margin-top: 14px; line-height: 1.5; }
+        .preview { position: sticky; top: 90px; }
+        .preview canvas { width: 100%; height: auto; display: block; border-radius: 20px; box-shadow: var(--shadow); background: var(--surface); }
+        .preview canvas[hidden] { display: none; }
+        #ticketCanvas { max-width: 420px; margin: 0 auto; }
+        @media (max-width: 860px) {
+            .maker-grid { grid-template-columns: minmax(0, 1fr); }
+            .preview { position: static; max-width: 420px; margin: 0 auto; width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="maker-top">
+        <div class="container">
+            <a class="brand" href="index.html"><img src="images/pr logo.png" alt="">PROM<span>NIGHT</span></a>
+            <span class="eyebrow" style="margin:0">Organisers only</span>
+        </div>
+    </header>
+
+    <main class="maker">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Organiser tools</div>
+                <h2 class="section-title">Tickets &amp; <em>winners</em></h2>
+                <p class="section-sub">Make e-tickets to send after payment, and the winners poster after the crowning.</p>
+            </div>
+
+            <div class="maker-grid">
+                <div class="form-card">
+                    <div class="tabs" role="tablist">
+                        <button type="button" class="tab" role="tab" data-panel="ticket" aria-selected="true"><i class="bi-qr-code"></i>E-ticket</button>
+                        <button type="button" class="tab" role="tab" data-panel="winners" aria-selected="false"><i class="bi-trophy"></i>Winners poster</button>
+                    </div>
+
+                    <form class="panel" id="ticketPanel" autocomplete="off">
+                        <div class="field"><label for="tName">Guest name</label><input class="input" id="tName" maxlength="40" placeholder="e.g. Kevin Kiprop"></div>
+                        <div class="field">
+                            <label for="tPackage">Package</label>
+                            <select class="input" id="tPackage">
+                                <option value="Individual|1">Individual · KSh 3,500</option>
+                                <option value="Individual + Transport|1">Individual + Transport · KSh 5,500</option>
+                                <option value="Couple|2">Couple · KSh 6,000</option>
+                                <option value="Couple + Transport|2">Couple + Transport · KSh 9,000</option>
+                            </select>
+                        </div>
+                        <div class="field"><label for="tNumber">Ticket number</label><input class="input" id="tNumber" maxlength="12"></div>
+                        <div class="actions">
+                            <button type="button" class="btn btn-gold btn-block" id="tShare"><i class="bi-share"></i> Share ticket</button>
+                            <button type="button" class="btn btn-outline btn-block" id="tDownload"><i class="bi-download"></i> Download ticket</button>
+                        </div>
+                        <p class="hint">The number goes up by one after each download or share. The QR code holds the ticket number, name and package. At the door, scan it with any phone camera and tick the number off your Zenlipa sales list.</p>
+                    </form>
+
+                    <form class="panel" id="winnersPanel" autocomplete="off" hidden>
+                        <div class="field"><label for="wMiss">Miss Prom 2026</label><input class="input" id="wMiss" maxlength="30"></div>
+                        <div class="field"><label for="wMissPhoto">Miss Prom photo (optional)</label><input class="input" id="wMissPhoto" type="file" accept="image/*"></div>
+                        <div class="field"><label for="wMr">Mr Prom 2026</label><input class="input" id="wMr" maxlength="30"></div>
+                        <div class="field"><label for="wMrPhoto">Mr Prom photo (optional)</label><input class="input" id="wMrPhoto" type="file" accept="image/*"></div>
+                        <div class="field"><label for="wBest">Best Dressed (optional)</label><input class="input" id="wBest" maxlength="30"></div>
+                        <div class="actions">
+                            <button type="button" class="btn btn-gold btn-block" id="wShare"><i class="bi-share"></i> Share poster</button>
+                            <button type="button" class="btn btn-outline btn-block" id="wDownload"><i class="bi-download"></i> Download poster</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="preview">
+                    <canvas id="ticketCanvas" width="1080" height="1920" aria-label="E-ticket preview"></canvas>
+                    <canvas id="winnersCanvas" width="1080" height="1350" aria-label="Winners poster preview" hidden></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="js/card-kit.js"></script>
+    <script>
+        const $ = id => document.getElementById(id);
+        const ticketCanvas = $("ticketCanvas");
+        const winnersCanvas = $("winnersCanvas");
+        const tk = CardKit.create(ticketCanvas);
+        const wk = CardKit.create(winnersCanvas);
+        const photos = { miss: null, mr: null };
+
+        function storedNumber() {
+            try { return parseInt(localStorage.getItem("promTicketNo"), 10) || 1; } catch (err) { return 1; }
+        }
+        function formatNumber(n) { return "PN26" + String(n).padStart(4, "0"); }
+        function nextNumber() {
+            const n = (parseInt($("tNumber").value.replace(/\D/g, "").slice(2), 10) || 0) + 1;
+            try { localStorage.setItem("promTicketNo", n); } catch (err) { /* private mode */ }
+            $("tNumber").value = formatNumber(n);
+            drawTicket();
+        }
+
+        async function drawTicket() {
+            const { ctx, W, H, text, gold } = tk;
+            await document.fonts.ready;
+            const name = $("tName").value.trim() || "Guest name";
+            const [pkg, admits] = $("tPackage").value.split("|");
+            const number = $("tNumber").value.trim() || formatNumber(1);
+
+            await tk.backdrop(await CardKit.loadImage("images/countdown/pexels-35764838.jpg"), "#0e0a14", .4);
+            text("OFFICIAL E TICKET", 230, 26, "700 {s}px Outfit", "#f6d892", { spacing: .35 });
+            text("Prom Night", 360, 140, "800 {s}px 'Playfair Display'", gold(260, 380));
+            text("2026", 430, 44, "300 {s}px Outfit", "#fff", { spacing: .5 });
+
+            // Ticket card
+            const top = 500;
+            ctx.fillStyle = "#fbf6ec";
+            ctx.beginPath(); ctx.roundRect(90, top, W - 180, 1180, 36); ctx.fill();
+            ctx.fillStyle = "#0e0a14";
+            [top + 420].forEach(y => {
+                ctx.beginPath(); ctx.arc(90, y, 26, 0, 7); ctx.fill();
+                ctx.beginPath(); ctx.arc(W - 90, y, 26, 0, 7); ctx.fill();
+            });
+            ctx.setLineDash([14, 12]); ctx.strokeStyle = "rgba(42,29,18,.3)"; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(140, top + 420); ctx.lineTo(W - 140, top + 420); ctx.stroke(); ctx.setLineDash([]);
+
+            text("GUEST", top + 90, 22, "700 {s}px Outfit", "#a5822f", { spacing: .3, shadow: false });
+            text(name, top + 175, 76, "800 {s}px 'Playfair Display'", "#2a1d12", { shadow: false, maxWidth: W - 280 });
+            text(pkg, top + 250, 40, "500 {s}px Outfit", "#5c4313", { shadow: false });
+            text(`Admits ${admits}  ·  ${number}`, top + 320, 32, "700 {s}px Outfit", "#2a1d12", { shadow: false });
+
+            // Check in QR code
+            const qr = qrcode(0, "M");
+            qr.addData(`PROMNIGHT2026|${number}|${name}|${pkg}`);
+            qr.make();
+            const count = qr.getModuleCount(), size = 440, cell = size / count;
+            const qx = (W - size) / 2, qy = top + 480;
+            ctx.fillStyle = "#2a1d12";
+            for (let r = 0; r < count; r++)
+                for (let c = 0; c < count; c++)
+                    if (qr.isDark(r, c)) ctx.fillRect(Math.floor(qx + c * cell), Math.floor(qy + r * cell), Math.ceil(cell), Math.ceil(cell));
+            text("Show this QR code at the door", qy + size + 70, 30, "500 {s}px Outfit", "#5c4313", { shadow: false });
+            text("Thu 10 Dec 2026  ·  6:00 PM  ·  Boma Inn, Eldoret", qy + size + 130, 30, "700 {s}px Outfit", "#2a1d12", { shadow: false, maxWidth: W - 260 });
+
+            text("prom2026.online", H - 120, 30, "600 {s}px Outfit", "#f6d892", { shadow: false });
+            tk.hashtag();
+            await CardKit.cache(ticketCanvas);
+        }
+
+        async function drawWinners() {
+            const { ctx, W, text, gold, circlePhoto } = wk;
+            await document.fonts.ready;
+            await wk.backdrop(await CardKit.loadImage("images/countdown/pexels-31196839.jpg"), "#120a1c", .5);
+            text("CONGRATULATIONS", 230, 28, "700 {s}px Outfit", "#f6d892", { spacing: .4 });
+            text("Mr & Miss Prom", 350, 120, "800 {s}px 'Playfair Display'", gold(260, 360));
+            text("2026", 420, 44, "300 {s}px Outfit", "#fff", { spacing: .5 });
+
+            const crown = await CardKit.loadImage("images/countdown/pexels-29069190.jpg");
+            const people = [["Miss Prom", $("wMiss").value.trim() || "Name", photos.miss, W * .28], ["Mr Prom", $("wMr").value.trim() || "Name", photos.mr, W * .72]];
+            for (const [title, name, photo, cx] of people) {
+                const cy = 640, r = 170;
+                if (photo || crown) circlePhoto(photo || crown, cx, cy, r);
+                ctx.strokeStyle = gold(cy - r, cy + r); ctx.lineWidth = 8;
+                ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.stroke();
+                text(title.toUpperCase(), cy + r + 70, 24, "700 {s}px Outfit", "#f6d892", { x: cx, spacing: .3, maxWidth: 420 });
+                text(name, cy + r + 140, 56, "800 {s}px 'Playfair Display'", "#fff", { x: cx, maxWidth: 440 });
+            }
+            const best = $("wBest").value.trim();
+            if (best) text(`Best Dressed: ${best}`, 1110, 40, "italic 600 {s}px 'Playfair Display'", "#f6e3b8");
+            text("Thank you Eldoret for an unforgettable night", best ? 1190 : 1150, 32, "300 {s}px Outfit", "#e9dcf5");
+            wk.hashtag();
+            await CardKit.cache(winnersCanvas);
+        }
+
+        document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+            const panel = t.dataset.panel;
+            document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b === t));
+            $("ticketPanel").hidden = panel !== "ticket";
+            $("winnersPanel").hidden = panel !== "winners";
+            ticketCanvas.hidden = panel !== "ticket";
+            winnersCanvas.hidden = panel !== "winners";
+        }));
+
+        ["tName", "tPackage", "tNumber"].forEach(id => $(id).addEventListener("input", drawTicket));
+        ["wMiss", "wMr", "wBest"].forEach(id => $(id).addEventListener("input", drawWinners));
+        $("wMissPhoto").addEventListener("change", async e => { photos.miss = await CardKit.readPhoto(e.target.files[0]); drawWinners(); });
+        $("wMrPhoto").addEventListener("change", async e => { photos.mr = await CardKit.readPhoto(e.target.files[0]); drawWinners(); });
+
+        const ticketFile = () => `prom-night-ticket-${$("tNumber").value.trim().toLowerCase()}-${CardKit.slug($("tName").value) || "guest"}.png`;
+        $("tDownload").addEventListener("click", async () => { if (await CardKit.download(ticketCanvas, ticketFile())) nextNumber(); });
+        $("tShare").addEventListener("click", async () => {
+            if (await CardKit.share(ticketCanvas, ticketFile(), `Your Prom Night 2026 ticket ✨ Show the QR code at the door. Thu 10 Dec, 6:00 PM, Boma Inn Eldoret. ${CardKit.HASHTAG}`)) nextNumber();
+        });
+        $("wDownload").addEventListener("click", () => CardKit.download(winnersCanvas, "mr-and-miss-prom-2026-winners.png"));
+        $("wShare").addEventListener("click", () => {
+            CardKit.share(winnersCanvas, "mr-and-miss-prom-2026-winners.png", `Congratulations to our Mr & Miss Prom 2026! Thank you Eldoret ✨ ${CardKit.HASHTAG}`);
+        });
+
+        const params = new URLSearchParams(location.search);
+        $("tName").value = params.get("name") || "";
+        $("tNumber").value = formatNumber(storedNumber());
+        if (params.get("miss")) $("wMiss").value = params.get("miss");
+        if (params.get("mr")) $("wMr").value = params.get("mr");
+        drawTicket();
+        drawWinners();
+        if (params.get("tab") === "winners") document.querySelector('[data-panel="winners"]').click();
+    </script>
+</body>
+
+</html>

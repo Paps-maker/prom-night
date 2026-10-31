@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="../css/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root {
+    --gold: #e3b75a;
+    --gold-light: #f6d892;
+    --gold-grad: linear-gradient(135deg, #fbe3a6 0%, #e3b75a 45%, #b8862f 100%);
+    --rose: #e2457a;
+    --text: #f4eff8;
+    --muted: #cbbfd8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #0b0910; }
+
+  .poster {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    font-family: "Outfit", sans-serif;
+    color: var(--text);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .bg {
+    position: absolute; inset: 0; z-index: -3;
+    background: url("../images/ball.jpg") center 30% / cover;
+    filter: saturate(1.1);
+  }
+  .shade {
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      radial-gradient(ellipse at 50% 22%, rgba(194, 24, 91, 0.35), transparent 55%),
+      linear-gradient(180deg, rgba(11, 9, 16, 0.55) 0%, rgba(11, 9, 16, 0.72) 35%, rgba(11, 9, 16, 0.96) 62%, #0b0910 100%);
+  }
+  .sparkles { position: absolute; inset: 0; z-index: -1; }
+  .sparkles i {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold-light); box-shadow: 0 0 12px 3px rgba(246, 216, 146, 0.7);
+  }
+  .frame {
+    position: absolute; inset: 28px;
+    border: 1.5px solid rgba(227, 183, 90, 0.55);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+  .frame::after {
+    content: ""; position: absolute; inset: 8px;
+    border: 1px solid rgba(227, 183, 90, 0.2);
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    padding: 78px 90px 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .top { display: flex; align-items: center; gap: 14px; }
+  .top img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(227, 183, 90, 0.6); }
+  .presents { font-size: 19px; font-weight: 600; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold-light); }
+
+  h1 {
+    margin-top: 26px;
+    font-family: "Playfair Display", serif;
+    font-weight: 800;
+    font-size: 138px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  }
+  .year {
+    display: block;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 118px;
+    line-height: 1.05;
+    background: var(--gold-grad);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 6px 24px rgba(227, 183, 90, 0.35));
+  }
+  .tagline {
+    margin-top: 18px;
+    font-size: 27px;
+    font-weight: 300;
+    color: #e9e0f1;
+    letter-spacing: 0.02em;
+  }
+
+  .details {
+    margin-top: 38px;
+    display: flex;
+    border: 1px solid rgba(227, 183, 90, 0.45);
+    border-radius: 18px;
+    background: rgba(18, 14, 25, 0.7);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+  }
+  .details div { padding: 18px 30px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .details div + div { border-left: 1px solid rgba(227, 183, 90, 0.3); }
+  .details i { font-size: 26px; color: var(--gold); margin-bottom: 4px; }
+  .details strong { font-size: 24px; font-weight: 600; white-space: nowrap; }
+  .details span { font-size: 16px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .highlights {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    width: 100%;
+  }
+  .hl { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .hl i {
+    width: 64px; height: 64px; display: grid; place-items: center;
+    border-radius: 50%;
+    background: rgba(227, 183, 90, 0.12);
+    border: 1px solid rgba(227, 183, 90, 0.4);
+    color: var(--gold-light); font-size: 27px;
+  }
+  .hl span { font-size: 18px; font-weight: 500; line-height: 1.25; color: #ece4f3; }
+
+  .dress { margin: auto 0; padding: 26px 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .ornament { display: flex; align-items: center; gap: 16px; color: var(--gold); font-size: 22px; margin-bottom: 6px; }
+  .ornament span { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, rgba(227, 183, 90, 0.7)); }
+  .ornament span:last-child { transform: scaleX(-1); }
+  .dress-label { font-size: 15px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); }
+  .dress-themes { font-family: "Playfair Display", serif; font-style: italic; font-size: 36px; font-weight: 700; }
+  .dress-themes b { color: var(--gold); margin: 0 8px; }
+  .limited {
+    margin-top: 12px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 22px; border-radius: 999px;
+    background: rgba(226, 69, 122, 0.18); border: 1px solid rgba(226, 69, 122, 0.55);
+    color: #ffb3cb; font-size: 18px; font-weight: 600;
+  }
+  .bottom {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 34px;
+    align-items: center;
+    padding: 28px;
+    border-radius: 24px;
+    background: linear-gradient(120deg, rgba(227, 183, 90, 0.16), rgba(26, 20, 36, 0.92) 55%);
+    border: 1px solid rgba(227, 183, 90, 0.5);
+    text-align: left;
+  }
+  .qr { background: #fff; padding: 12px; border-radius: 16px; }
+  .qr img { display: block; width: 168px; height: 168px; image-rendering: pixelated; }
+  .scan { font-size: 15px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .price { font-family: "Playfair Display", serif; font-size: 44px; font-weight: 700; line-height: 1.15; margin: 4px 0 10px; }
+  .price em { font-style: italic; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .packages { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .packages span {
+    font-size: 15px; padding: 6px 12px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); color: #e6dcef;
+  }
+  .packages b { color: var(--gold-light); font-weight: 600; }
+  .contact { display: flex; gap: 22px; font-size: 18px; color: var(--muted); }
+  .contact i { color: var(--gold); margin-right: 6px; }
+  .contact strong { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg"></div>
+  <div class="shade"></div>
+  <div class="sparkles">
+    <i style="top:120px;left:160px"></i><i style="top:210px;left:930px"></i><i style="top:340px;left:110px;transform:scale(.6)"></i>
+    <i style="top:90px;left:760px;transform:scale(.7)"></i><i style="top:470px;left:960px;transform:scale(.5)"></i><i style="top:560px;left:70px;transform:scale(.8)"></i>
+  </div>
+  <div class="frame"></div>
+  <div style="position:absolute;left:0;right:0;bottom:40px;z-index:5;text-align:center;font:600 18px Outfit,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.55)">#PromNightEldoret2026</div>
+
+  <div class="content">
+    <div class="top">
+      <img src="../images/pr logo.png" alt="">
+      <div class="presents">Presents</div>
+    </div>
+
+    <h1>Prom Night<span class="year">2026</span></h1>
+    <p class="tagline">One unforgettable evening of elegance, music &amp; memories</p>
+
+    <div class="details">
+      <div><i class="bi-calendar-event"></i><strong>Thu, 10 Dec 2026</strong><span>Date</span></div>
+      <div><i class="bi-clock"></i><strong>6:00 PM</strong><span>Doors open</span></div>
+      <div><i class="bi-geo-alt"></i><strong>Boma Inn, Eldoret</strong><span>Venue</span></div>
+    </div>
+
+    <div class="highlights">
+      <div class="hl"><i class="bi-camera"></i><span>Red Carpet<br>Entrance</span></div>
+      <div class="hl"><i class="bi-egg-fried"></i><span>Three Course<br>Dinner</span></div>
+      <div class="hl"><i class="bi-music-note-beamed"></i><span>Live DJ &amp;<br>Dance Floor</span></div>
+      <div class="hl"><i class="bi-trophy"></i><span>Prom King &amp;<br>Queen Crowning</span></div>
+    </div>
+
+    <div class="dress">
+      <div class="ornament"><span></span><i class="bi-stars"></i><span></span></div>
+      <div class="dress-label">Dress Code</div>
+      <div class="dress-themes">Red Carpet <b>&middot;</b> Classic Prom <b>&middot;</b> Royal Night</div>
+      <div class="limited"><i class="bi-fire"></i> Limited seats. Book early!</div>
+    </div>
+
+    <div class="bottom">
+      <div class="qr"><img src="../images/zenlipa-qr.png" alt="Scan to buy tickets"></div>
+      <div>
+        <div class="scan">Scan to get your ticket</div>
+        <div class="price">Tickets from <em>KSh 3,500</em></div>
+        <div class="packages">
+          <span>Individual <b>3,500</b></span>
+          <span>Individual + Transport <b>5,500</b></span>
+          <span>Couple <b>6,000</b></span>
+          <span>Couple + Transport <b>9,000</b></span>
+        </div>
+        <div class="contact">
+          <span><i class="bi-globe2"></i><strong>prom2026.online</strong></span>
+          <span><i class="bi-telephone"></i><strong>0717 436 668</strong></span>
+          <span><strong>0792 100 146</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
