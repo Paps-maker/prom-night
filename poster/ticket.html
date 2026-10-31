@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Ticket</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="../css/bootstrap-icons.css" rel="stylesheet">
+<link href="base.css" rel="stylesheet">
+<style>
+  /* Render with #1 to #4 in the URL to pick the ticket type */
+  body { background: #fff; }
+  .page {
+    width: 1800px; height: 640px;
+    display: grid; grid-template-columns: 1fr 430px;
+    color: #f4eff8;
+    border-radius: 34px;
+    background: #0d0a12;
+    -webkit-mask:
+      radial-gradient(circle at 1370px 0, transparent 30px, #000 31px) top / 100% 51% no-repeat,
+      radial-gradient(circle at 1370px 100%, transparent 30px, #000 31px) bottom / 100% 51% no-repeat;
+  }
+
+  .main { position: relative; padding: 54px 64px; display: flex; flex-direction: column; overflow: hidden; isolation: isolate; }
+  .main .cover { opacity: .55; filter: blur(2px); transform: scale(1.03); }
+  .main .layer { background: linear-gradient(90deg, #0d0a12 30%, rgba(13, 10, 18, .7) 65%, rgba(13, 10, 18, .2)); }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 14px; background: var(--grad); }
+
+  .top { display: flex; align-items: center; gap: 16px; }
+  .top img { width: 58px; height: 58px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; }
+  .top .brand { font-size: 17px; letter-spacing: .4em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+  .tier-chip { margin-left: auto; padding: 10px 22px; border-radius: 999px; background: var(--grad); color: var(--on-accent); font-weight: 700; font-size: 17px; letter-spacing: .2em; text-transform: uppercase; }
+
+  h1 { margin-top: 34px; font-size: 104px; font-weight: 800; line-height: .95; }
+  h1 em { font-style: italic; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tier-name { margin-top: 10px; font-size: 34px; font-weight: 300; letter-spacing: .04em; }
+  .tier-name b { font-weight: 600; color: var(--accent); }
+
+  .perks { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 900px; }
+  .perks span { padding: 9px 16px; border-radius: 999px; font-size: 18px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .14); }
+  .perks i { color: var(--accent); margin-right: 8px; }
+
+  .meta { margin-top: auto; display: flex; gap: 46px; }
+  .meta span { display: block; font-size: 14px; letter-spacing: .3em; text-transform: uppercase; color: #a99fb7; margin-bottom: 4px; }
+  .meta strong { font-size: 26px; font-weight: 600; }
+
+  .stub {
+    position: relative; padding: 50px 46px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    background: var(--stub-bg);
+    border-left: 4px dotted rgba(255, 255, 255, .25);
+  }
+  .stub .admit { font-size: 16px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--stub-muted); }
+  .stub .count { font-family: "Playfair Display", serif; font-size: 120px; font-weight: 800; line-height: 1; color: var(--stub-strong); }
+  .stub .who { font-size: 20px; font-weight: 600; color: var(--stub-strong); letter-spacing: .1em; text-transform: uppercase; }
+  .stub .price { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--stub-line); width: 100%; }
+  .stub .price small { display: block; font-size: 14px; letter-spacing: .3em; text-transform: uppercase; color: var(--stub-muted); font-weight: 600; }
+  .stub .price b { font-family: "Playfair Display", serif; font-size: 58px; color: var(--stub-strong); line-height: 1.1; }
+  .stub .no { margin-top: auto; width: 100%; padding: 14px; border: 1.5px dashed var(--stub-line); border-radius: 12px; font-size: 15px; letter-spacing: .3em; text-transform: uppercase; color: var(--stub-muted); font-weight: 600; text-align: left; }
+
+  /* Ticket themes */
+  .t1 { --accent: #e3b75a; --grad: linear-gradient(135deg, #fbe3a6, #e3b75a 45%, #b8862f); --on-accent: #1a1206;
+        --stub-bg: linear-gradient(160deg, #fbe3a6, #e3b75a 55%, #b8862f); --stub-strong: #1a1206; --stub-muted: #5c4313; --stub-line: rgba(26, 18, 6, .3); }
+  .t2 { --accent: #ff7aa5; --grad: linear-gradient(135deg, #ff8fb2, #e2457a 50%, #9e1046); --on-accent: #fff;
+        --stub-bg: linear-gradient(160deg, #ff7aa5, #c2185b 60%, #7d0c37); --stub-strong: #fff; --stub-muted: #ffd0df; --stub-line: rgba(255, 255, 255, .4); }
+  .t3 { --accent: #c9a7ff; --grad: linear-gradient(135deg, #e7d6ff, #b48cff 50%, #7a4fd1); --on-accent: #1b0f33;
+        --stub-bg: linear-gradient(160deg, #e7d6ff, #b48cff 55%, #7a4fd1); --stub-strong: #1b0f33; --stub-muted: #45307a; --stub-line: rgba(27, 15, 51, .3); }
+  .t4 { --accent: #e3b75a; --grad: linear-gradient(135deg, #fbe3a6, #e3b75a 45%, #b8862f); --on-accent: #1a1206;
+        --stub-bg: linear-gradient(160deg, #1d1726, #0b0910); --stub-strong: #f6d892; --stub-muted: #a99fb7; --stub-line: rgba(227, 183, 90, .45); }
+  .t4 .stub { border-left-color: rgba(227, 183, 90, .5); }
+  .t4 .page-glow { position: absolute; inset: 0; border: 2px solid rgba(227, 183, 90, .6); border-radius: 34px; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="page" id="ticket">
+  <section class="main">
+    <div class="cover" id="photo"></div>
+    <div class="layer"></div>
+    <div class="accent-bar"></div>
+
+    <div class="top">
+      <img src="../images/pr logo.png" alt="">
+      <div class="brand">Official Ticket</div>
+      <div class="tier-chip" id="chip"></div>
+    </div>
+
+    <h1 class="serif">Prom Night <em>2026</em></h1>
+    <div class="tier-name" id="tierName"></div>
+
+    <div class="perks" id="perks"></div>
+
+    <div class="meta">
+      <div><span>Date</span><strong>Thu, 10 Dec 2026</strong></div>
+      <div><span>Doors open</span><strong>6:00 PM</strong></div>
+      <div><span>Venue</span><strong>Boma Inn, Eldoret</strong></div>
+    </div>
+  </section>
+
+  <aside class="stub">
+    <div class="admit">Admit</div>
+    <div class="count" id="count"></div>
+    <div class="who" id="who"></div>
+    <div class="price"><small>Ticket price</small><b id="price"></b></div>
+    <div class="no">Ticket No.</div>
+  </aside>
+</div>
+
+<script>
+  const TIERS = {
+    1: { cls: "t1", chip: "Individual", name: "<b>Individual</b> Ticket", count: "1", who: "Guest", price: "KSh 3,500", photo: "ball.jpg",
+         perks: [["bi-egg-fried", "3 course meal"], ["bi-cup-straw", "1 glass of wine or soft drink"], ["bi-stars", "All activities"], ["bi-music-note-beamed", "Premium sound & lighting"]] },
+    2: { cls: "t2", chip: "Most Popular", name: "<b>Individual + Transport</b> Ticket", count: "1", who: "Guest", price: "KSh 5,500", photo: "dj.jpg",
+         perks: [["bi-car-front", "Transport to & from venue"], ["bi-egg-fried", "3 course meal"], ["bi-cup-straw", "Wine or soft drink"], ["bi-stars", "All activities"], ["bi-music-note-beamed", "Premium sound & lighting"]] },
+    3: { cls: "t3", chip: "Couple", name: "<b>Couple</b> Ticket", count: "2", who: "Guests", price: "KSh 6,000", photo: "dance.jpg",
+         perks: [["bi-people", "Entry for 2"], ["bi-egg-fried", "3 course meal for two"], ["bi-cup-straw", "2 glasses of wine or drinks"], ["bi-stars", "All activities"], ["bi-gem", "Premium dining"]] },
+    4: { cls: "t4", chip: "VIP Couple", name: "<b>Couple + Transport</b> Ticket", count: "2", who: "Guests", price: "KSh 9,000", photo: "crowning.jpg",
+         perks: [["bi-car-front", "Transport for 2"], ["bi-egg-fried", "3 course meal for two"], ["bi-cup-straw", "Wine & drinks"], ["bi-stars", "All activities"], ["bi-star-fill", "Priority seating"]] },
+  };
+  const t = TIERS[location.hash.slice(1)] || TIERS[1];
+  const $ = id => document.getElementById(id);
+  document.body.className = t.cls;
+  $("chip").textContent = t.chip;
+  $("tierName").innerHTML = t.name;
+  $("count").textContent = t.count;
+  $("who").textContent = t.who;
+  $("price").textContent = t.price;
+  $("photo").style.backgroundImage = `url("../images/${t.photo}")`;
+  $("perks").innerHTML = t.perks.map(([i, txt]) => `<span><i class="${i}"></i>${txt.replace("&", "&amp;")}</span>`).join("");
+  if (t.cls === "t4") $("ticket").insertAdjacentHTML("beforeend", '<div class="page-glow"></div>');
+</script>
+</body>
+</html>

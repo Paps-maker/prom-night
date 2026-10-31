@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
+<style>
+  /* Render each slide with carousel.html#1 to #5 */
+  .page { width: 1080px; height: 1350px; color: #fff; background: #0e0a14; }
+  .cover { bottom: 45%; }
+  .layer { background: linear-gradient(180deg, rgba(14, 10, 20, .35), rgba(14, 10, 20, .6) 30%, #0e0a14 55%); }
+  .content { position: relative; height: 100%; padding: 64px 80px 60px; display: flex; flex-direction: column; }
+  .slide { display: none; flex: 1; flex-direction: column; }
+  .slide.on { display: flex; }
+
+  .top { display: flex; align-items: center; gap: 16px; }
+  .top img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #e3b75a; object-fit: cover; }
+  .top .brand { font-size: 19px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; }
+  .top .count { margin-left: auto; font-size: 20px; font-weight: 600; padding: 8px 20px; border-radius: 999px; background: rgba(0, 0, 0, .45); border: 1px solid rgba(255, 255, 255, .25); }
+
+  .eyebrow { font-size: 22px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: #e3b75a; }
+  h1 { font-size: 104px; font-weight: 800; line-height: .98; margin-top: 14px; }
+  h1 em { font-style: italic; }
+  .lead { margin-top: 20px; font-size: 30px; font-weight: 300; color: #ddd0ea; line-height: 1.45; max-width: 860px; }
+
+  .bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 30px; }
+  .dots { display: flex; gap: 10px; }
+  .dots b { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, .25); }
+  .dots b.on { width: 40px; border-radius: 999px; background: #e3b75a; }
+  .swipe { font-size: 22px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #f6d892; }
+  .swipe i { margin-left: 10px; }
+
+  /* Slide 1 */
+  .s1 .intro { margin-top: 300px; }
+  .grid { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid div { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-radius: 22px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .12); font-size: 27px; font-weight: 500; }
+  .grid i { font-size: 34px; color: #e3b75a; width: 40px; text-align: center; }
+
+  /* Slide 2 */
+  .s2 .intro { margin-top: 240px; }
+  .menus { margin-top: 40px; display: grid; gap: 16px; }
+  .menus div { display: flex; align-items: center; gap: 26px; padding: 26px 30px; border-radius: 24px; background: rgba(20, 15, 28, .8); border: 1px solid rgba(227, 183, 90, .35); }
+  .menus b { font-family: "Playfair Display", serif; font-size: 46px; color: #f6d892; width: 90px; }
+  .menus span { font-size: 28px; line-height: 1.4; }
+  .menus small { display: block; font-size: 19px; letter-spacing: .25em; text-transform: uppercase; color: #a99fb7; font-weight: 600; }
+
+  /* Slide 3 */
+  .s3 .intro { margin-top: 400px; text-align: center; align-items: center; display: flex; flex-direction: column; }
+  .s3 h1 { font-size: 130px; }
+  .steps { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .steps div { text-align: center; padding: 30px 18px; border-radius: 26px; background: rgba(40, 24, 60, .6); border: 1px solid rgba(227, 183, 90, .45); }
+  .steps i { font-size: 46px; color: #e3b75a; }
+  .steps strong { display: block; margin-top: 12px; font-size: 30px; }
+  .steps span { display: block; margin-top: 6px; font-size: 22px; color: #cbbfd8; }
+
+  /* Slide 4 */
+  .s4 .intro { margin-top: 240px; }
+  .tiers { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .tiers div { position: relative; padding: 34px 30px; border-radius: 28px; background: rgba(20, 15, 28, .85); border: 1px solid rgba(255, 255, 255, .14); }
+  .tiers div.hot { border: 2px solid #e3b75a; background: linear-gradient(160deg, rgba(227, 183, 90, .18), rgba(20, 15, 28, .9)); }
+  .tiers .tag { position: absolute; top: -16px; right: 24px; padding: 6px 16px; border-radius: 999px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; font-size: 16px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+  .tiers i { font-size: 38px; color: #e3b75a; }
+  .tiers span { display: block; margin-top: 12px; font-size: 27px; font-weight: 500; }
+  .tiers b { display: block; margin-top: 6px; font-family: "Playfair Display", serif; font-size: 64px; color: #f6d892; line-height: 1.1; }
+  .tiers small { font-size: 20px; color: #a99fb7; }
+
+  /* Slide 5 */
+  .s5 { align-items: center; text-align: center; }
+  .s5 .intro { margin-top: 200px; display: flex; flex-direction: column; align-items: center; }
+  .s5 h1 { font-size: 120px; }
+  .s5 .qr { margin-top: 44px; padding: 20px; border-radius: 28px; }
+  .s5 .qr img { width: 330px; height: 330px; }
+  .s5 .link { margin-top: 30px; font-size: 34px; font-weight: 700; }
+  .s5 .meta { margin-top: 26px; display: flex; gap: 0; border-top: 1px solid rgba(255, 255, 255, .25); border-bottom: 1px solid rgba(255, 255, 255, .25); }
+  .s5 .meta div { padding: 16px 26px; font-size: 24px; font-weight: 500; }
+  .s5 .meta div + div { border-left: 1px solid rgba(255, 255, 255, .25); }
+  .s5 .meta i { color: #e3b75a; margin-right: 10px; }
+  .s5 .phones { margin-top: 18px; font-size: 22px; color: #cbbfd8; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hashtag">#PromNightEldoret2026</div>
+  <div class="cover" id="photo"></div>
+  <div class="layer"></div>
+  <span class="spark" style="top:200px;left:150px"></span><span class="spark" style="top:330px;left:920px"></span><span class="spark" style="top:470px;left:100px;transform:scale(.6)"></span>
+
+  <div class="content">
+    <div class="top">
+      <img src="../../images/pr logo.png" alt="">
+      <div class="brand">Prom Night 2026</div>
+      <div class="count" id="count"></div>
+    </div>
+
+    <section class="slide s1" data-photo="countdown/pexels-35764838.jpg">
+      <div class="intro">
+        <div class="eyebrow">The experience</div>
+        <h1 class="serif">One night.<br><em class="gold-text">Everything included.</em></h1>
+      </div>
+      <div class="grid">
+        <div><i class="bi-stars"></i>Red carpet entrance</div>
+        <div><i class="bi-egg-fried"></i>Three course dinner</div>
+        <div><i class="bi-cup-straw"></i>Drinks and mocktails</div>
+        <div><i class="bi-music-note-beamed"></i>Live DJ and dance floor</div>
+        <div><i class="bi-trophy"></i>Awards and crowning</div>
+        <div><i class="bi-controller"></i>Games and performances</div>
+        <div><i class="bi-camera"></i>Themed photo booth</div>
+        <div><i class="bi-car-front"></i>Optional transport</div>
+      </div>
+    </section>
+
+    <section class="slide s2" data-photo="countdown/pexels-4992827.jpg">
+      <div class="intro">
+        <div class="eyebrow">The menu</div>
+        <h1 class="serif">Four menus.<br><em class="gold-text">One feast.</em></h1>
+        <p class="lead">A curated buffet with salads, soup, mains and desserts.</p>
+      </div>
+      <div class="menus">
+        <div><b>I</b><span><small>Menu one</small>Caesar salad · Beef fillet · Mango panna cotta</span></div>
+        <div><b>II</b><span><small>Menu two</small>Chicken tikka · Butter masala · Red velvet cake</span></div>
+        <div><b>III</b><span><small>Menu three</small>Short ribs · Swahili fish curry · Orange cheesecake</span></div>
+        <div><b>IV</b><span><small>Menu four</small>Goat stew · Chicken biryani · Chocolate mousse</span></div>
+      </div>
+    </section>
+
+    <section class="slide s3" data-photo="countdown/pexels-29069190.jpg">
+      <div class="intro">
+        <div class="eyebrow">Who will wear the crown?</div>
+        <h1 class="serif gold-text">Mr &amp; Miss Prom</h1>
+        <p class="lead">Dress like royalty and compete for the crown on the most glamorous night of the year.</p>
+      </div>
+      <div class="steps">
+        <div><i class="bi-pencil-square"></i><strong>Register</strong><span>Solo or as a couple</span></div>
+        <div><i class="bi-hand-thumbs-up"></i><strong>Get votes</strong><span>On prom2026.online</span></div>
+        <div><i class="bi-gem"></i><strong>Be crowned</strong><span>Live at 9:45 PM</span></div>
+      </div>
+    </section>
+
+    <section class="slide s4" data-photo="countdown/pexels-31091958.jpg">
+      <div class="intro">
+        <div class="eyebrow">Tickets</div>
+        <h1 class="serif">Pick your<br><em class="gold-text">package</em></h1>
+      </div>
+      <div class="tiers">
+        <div><i class="bi-person"></i><span>Individual</span><b>3,500</b><small>KSh · 1 guest</small></div>
+        <div class="hot"><em class="tag">Popular</em><i class="bi-car-front"></i><span>Individual + Transport</span><b>5,500</b><small>KSh · 1 guest</small></div>
+        <div><i class="bi-people"></i><span>Couple</span><b>6,000</b><small>KSh · 2 guests</small></div>
+        <div><i class="bi-gem"></i><span>Couple + Transport</span><b>9,000</b><small>KSh · 2 guests</small></div>
+      </div>
+    </section>
+
+    <section class="slide s5" data-photo="countdown/pexels-31196839.jpg">
+      <div class="intro">
+        <div class="eyebrow">Limited seats</div>
+        <h1 class="serif">Book your<br><em class="gold-text">seat now</em></h1>
+        <div class="qr"><img src="../../images/zenlipa-qr.png" alt=""></div>
+        <div class="link">Scan to pay or visit prom2026.online</div>
+        <div class="meta">
+          <div><i class="bi-calendar-event"></i>Thu, 10 Dec 2026</div>
+          <div><i class="bi-clock"></i>6:00 PM</div>
+          <div><i class="bi-geo-alt"></i>Boma Inn, Eldoret</div>
+        </div>
+        <div class="phones">0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146</div>
+      </div>
+    </section>
+
+    <div class="bottom">
+      <div class="dots" id="dots"></div>
+      <div class="swipe" id="swipe">Swipe<i class="bi-arrow-right"></i></div>
+    </div>
+  </div>
+</div>
+<script>
+  const slides = [...document.querySelectorAll(".slide")];
+  const n = Math.min(slides.length, Math.max(1, parseInt(location.hash.slice(1), 10) || 1));
+  const slide = slides[n - 1];
+  slide.classList.add("on");
+  document.getElementById("photo").style.backgroundImage = `url("../../images/${slide.dataset.photo}")`;
+  document.getElementById("count").textContent = `${n} / ${slides.length}`;
+  document.getElementById("dots").innerHTML = slides.map((_, i) => `<b class="${i === n - 1 ? "on" : ""}"></b>`).join("");
+  if (n === slides.length) document.getElementById("swipe").innerHTML = 'Link in bio<i class="bi-link-45deg"></i>';
+</script>
+</body>
+</html>

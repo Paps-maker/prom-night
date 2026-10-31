@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Story Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
+<style>
+  /* Story templates with empty space for poll, question or countdown stickers. Render story.html#1 to #4 */
+  .page { width: 1080px; height: 1920px; color: #fff; background: #0e0a14; }
+  .story { display: none; position: absolute; inset: 0; }
+  .story.on { display: block; }
+  .content { position: relative; height: 100%; padding: 150px 80px 170px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 22px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; }
+  .brand img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #e3b75a; object-fit: cover; }
+  .q { font-size: 130px; font-weight: 800; line-height: 1; }
+  .q em { font-style: italic; }
+  .sub { font-size: 36px; font-weight: 300; color: #ddd0ea; margin-top: 20px; }
+  .space { flex: 1; }
+  .foot { font-size: 26px; color: #cbbfd8; }
+  .foot b { color: #f6d892; font-weight: 600; }
+  .tag { margin-top: 12px; font-size: 24px; letter-spacing: .12em; font-weight: 600; color: rgba(255, 255, 255, .6); }
+
+  /* 1: Gown or suit */
+  .s1 .half { position: absolute; top: 0; bottom: 0; width: 50%; background-size: cover; background-position: center; }
+  .s1 .half.l { left: 0; background-image: url("../../images/countdown/pexels-18294723.jpg"); }
+  .s1 .half.r { right: 0; background-image: url("../../images/countdown/pexels-20029097.jpg"); }
+  .s1 .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 10, 20, .7), rgba(14, 10, 20, .35) 30%, rgba(14, 10, 20, .55) 60%, #0e0a14 90%); }
+  .s1 .vs { margin-top: 70px; display: flex; align-items: center; gap: 50px; }
+  .s1 .vs div { font-family: "Playfair Display", serif; font-size: 120px; font-weight: 800; text-shadow: 0 10px 40px rgba(0, 0, 0, .7); }
+  .s1 .vs span { width: 110px; height: 110px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; font-size: 40px; font-weight: 800; }
+
+  /* 2: Theme poll */
+  .s2 .t { position: absolute; left: 0; right: 0; height: 50%; background-size: cover; background-position: center; }
+  .s2 .t.a { top: 0; background-image: url("../../images/countdown/pexels-30767993.jpg"); }
+  .s2 .t.b { bottom: 0; background-image: url("../../images/royal.jpg"); }
+  .s2 .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 5, 11, .75), rgba(26, 5, 11, .5) 40%, rgba(14, 10, 20, .8) 50%, rgba(14, 10, 20, .5) 60%, rgba(14, 10, 20, .85)); }
+  .s2 .label { font-family: "Playfair Display", serif; font-size: 110px; font-weight: 800; text-shadow: 0 10px 40px rgba(0, 0, 0, .7); }
+  .s2 .or { margin: 34px 0; font-size: 40px; letter-spacing: .4em; font-weight: 300; padding-left: .4em; }
+
+  /* 3: Tag your date */
+  .s3 .cover { background-image: url("../../images/countdown/pexels-30767993.jpg"); bottom: 45%; }
+  .s3 .layer { background: linear-gradient(180deg, rgba(26, 5, 11, .3), rgba(26, 5, 11, .5) 30%, #1a050b 55%); }
+  .s3 .page-bg { position: absolute; inset: 0; background: #1a050b; z-index: -4; }
+  .s3 .script { margin-top: 520px; font-family: "Great Vibes", cursive; font-size: 110px; color: #ffd0d8; line-height: 1; }
+  .s3 .emoji { font-size: 120px; margin-top: 30px; }
+
+  /* 4: Countdown sticker */
+  .s4 .cover { background-image: url("../../images/countdown/pexels-31196839.jpg"); bottom: 50%; }
+  .s4 .layer { background: linear-gradient(180deg, rgba(14, 10, 20, .3), rgba(14, 10, 20, .5) 35%, #0e0a14 60%); }
+  .s4 .kick { margin-top: 540px; font-size: 30px; letter-spacing: .45em; text-transform: uppercase; font-weight: 600; color: #f6e3b8; padding-left: .45em; }
+  .s4 .date { margin-top: 40px; display: flex; border-radius: 30px; overflow: hidden; border: 2px solid rgba(227, 183, 90, .7); }
+  .s4 .date .d { padding: 24px 40px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; }
+  .s4 .date .d b { display: block; font-family: "Playfair Display", serif; font-size: 110px; line-height: .9; }
+  .s4 .date .d span { font-size: 30px; font-weight: 800; letter-spacing: .25em; }
+  .s4 .date .r { padding: 24px 40px; display: flex; flex-direction: column; justify-content: center; gap: 10px; font-size: 34px; text-align: left; background: rgba(14, 10, 20, .8); }
+  .s4 .date .r i { color: #e3b75a; margin-right: 12px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="story s1">
+    <div class="half l"></div><div class="half r"></div><div class="shade"></div>
+    <div class="content">
+      <div class="brand"><img src="../../images/pr logo.png" alt="">Prom Night 2026</div>
+      <div class="vs" style="margin-top:220px"><div>Gown</div><span>OR</span><div>Suit?</div></div>
+      <p class="sub">What are you rocking on 10 December?</p>
+      <div class="space"></div>
+      <div class="foot">Tickets from <b>KSh 3,500</b> · prom2026.online</div>
+      <div class="tag">#PromNightEldoret2026</div>
+    </div>
+  </section>
+
+  <section class="story s2">
+    <div class="t a"></div><div class="t b"></div><div class="shade"></div>
+    <div class="content">
+      <div class="brand"><img src="../../images/pr logo.png" alt="">Prom Night 2026</div>
+      <p class="sub" style="margin-top:60px">Pick your dress code</p>
+      <div class="label" style="margin-top:120px">Red Carpet</div>
+      <div class="space"></div>
+      <div class="label">Royal Night</div>
+      <div class="foot" style="margin-top:120px">Boma Inn, Eldoret · <b>Thu 10 Dec</b></div>
+      <div class="tag">#PromNightEldoret2026</div>
+    </div>
+  </section>
+
+  <section class="story s3">
+    <div class="page-bg"></div><div class="cover"></div><div class="layer"></div>
+    <div class="content">
+      <div class="brand"><img src="../../images/pr logo.png" alt="">Prom Night 2026</div>
+      <div class="script">Who&rsquo;s your</div>
+      <div class="q serif gold-text">prom date?</div>
+      <p class="sub">Tag them below</p>
+      <div class="emoji">&#128064;</div>
+      <div class="space"></div>
+      <div class="foot">Couple tickets <b>KSh 6,000</b> · prom2026.online</div>
+      <div class="tag">#PromNightEldoret2026</div>
+    </div>
+  </section>
+
+  <section class="story s4">
+    <div class="cover"></div><div class="layer"></div>
+    <div class="content">
+      <div class="brand"><img src="../../images/pr logo.png" alt="">Prom Night 2026</div>
+      <div class="kick">The countdown is on</div>
+      <div class="q serif gold-text" style="margin-top:20px">Don&rsquo;t miss it</div>
+      <div class="date"><div class="d"><b>10</b><span>DEC</span></div><div class="r"><div><i class="bi-clock"></i>6:00 PM</div><div><i class="bi-geo-alt"></i>Boma Inn</div></div></div>
+      <div class="space"></div>
+      <div class="foot">Tap <b>Remind me</b> so you don&rsquo;t forget</div>
+      <div class="tag">#PromNightEldoret2026</div>
+    </div>
+  </section>
+</div>
+<script>
+  const n = parseInt(location.hash.slice(1), 10) || 1;
+  document.querySelector(`.s${n}`).classList.add("on");
+</script>
+</body>
+</html>

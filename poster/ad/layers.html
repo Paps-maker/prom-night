@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Ad Layers</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<style>
+  /* Each text layer of the ad, rendered one at a time with a transparent background (layers.html#s1a) */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; width: 1080px; height: 1920px; overflow: hidden; font-family: "Outfit", sans-serif; color: #fff; }
+  .layer { position: absolute; left: 0; right: 0; display: none; flex-direction: column; align-items: center; text-align: center; padding: 0 70px; }
+  .layer.on { display: flex; }
+  .serif { font-family: "Playfair Display", serif; }
+  .gold { background: linear-gradient(135deg, #fff1c9 0%, #e3b75a 45%, #b8862f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .shadow { filter: drop-shadow(0 10px 40px rgba(0, 0, 0, .7)); }
+  .pill { padding: 14px 34px; border-radius: 999px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; font-weight: 800; font-size: 30px; letter-spacing: .3em; text-transform: uppercase; padding-left: calc(34px + .3em); }
+  .kick { font-size: 34px; letter-spacing: .5em; text-transform: uppercase; font-weight: 600; color: #f6e3b8; padding-left: .5em; }
+
+  #s1a { top: 700px; }
+  #s1a .kick { font-size: 46px; font-weight: 700; color: #fff; }
+  #s1b { top: 790px; }
+  #s1b div { font-size: 150px; font-style: italic; font-weight: 700; line-height: 1.05; }
+
+  #s2a { top: 440px; }
+  #s2a img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #e3b75a; object-fit: cover; margin-bottom: 30px; }
+  #s2b { top: 740px; }
+  #s2b div { font-size: 270px; font-weight: 900; line-height: .86; }
+  #s2c { top: 1260px; }
+  #s2c div { font-size: 70px; letter-spacing: .6em; font-weight: 300; padding-left: .6em; }
+  #s2c p { margin-top: 30px; font-family: "Playfair Display", serif; font-style: italic; font-size: 46px; color: #f6e3b8; }
+
+  .big { top: 760px; }
+  .big .kick { margin-bottom: 26px; }
+  .big h2 { font-size: 150px; font-weight: 900; line-height: .95; text-transform: uppercase; letter-spacing: .02em; }
+
+  #s4a { top: 640px; }
+  #s4a div { font-size: 74px; font-style: italic; font-weight: 600; white-space: nowrap; }
+  #s4b { top: 780px; }
+  #s4b div { font-size: 170px; font-weight: 900; line-height: .95; }
+  #s4b p { margin-top: 30px; font-size: 38px; font-weight: 300; color: #e9dcf5; }
+
+  #s5a { top: 330px; }
+  #s5a .serif { font-size: 180px; font-weight: 900; line-height: 1.1; margin-top: 10px; white-space: nowrap; }
+  #s5b { top: 760px; }
+  .tiers { width: 900px; border-radius: 36px; background: rgba(14, 10, 20, .72); border: 2px solid rgba(227, 183, 90, .55); padding: 20px 50px; }
+  .tiers div { display: flex; justify-content: space-between; align-items: center; padding: 34px 0; font-size: 42px; font-weight: 500; }
+  .tiers div + div { border-top: 1px solid rgba(255, 255, 255, .15); }
+  .tiers b { font-family: "Playfair Display", serif; font-size: 58px; color: #f6d892; }
+  .tiers i { color: #e3b75a; margin-right: 18px; }
+
+  #s6a { top: 540px; }
+  .date { display: flex; border-radius: 40px; overflow: hidden; border: 3px solid rgba(227, 183, 90, .7); background: rgba(14, 10, 20, .75); }
+  .date .day { padding: 40px 60px; background: linear-gradient(135deg, #fff1c9, #e3b75a 45%, #b8862f); color: #1a1206; }
+  .date .day b { display: block; font-family: "Playfair Display", serif; font-size: 230px; line-height: .9; }
+  .date .day span { font-size: 54px; font-weight: 800; letter-spacing: .3em; }
+  #s6b { top: 1180px; }
+  #s6b div { font-size: 64px; font-weight: 600; margin-bottom: 16px; }
+  #s6b i { color: #e3b75a; margin-right: 18px; }
+
+  #s7a { top: 330px; }
+  #s7a h2 { margin-top: 40px; font-size: 150px; font-weight: 900; line-height: .95; }
+  #s7b { top: 900px; }
+  .qr { background: #fff; border-radius: 34px; padding: 26px; }
+  .qr img { display: block; width: 420px; height: 420px; image-rendering: pixelated; }
+  #s7b .t1 { margin-top: 40px; font-size: 40px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; color: #f6d892; padding-left: .25em; }
+  #s7b .t2 { margin-top: 18px; font-size: 52px; font-weight: 700; }
+  #s7b .t3 { margin-top: 14px; font-size: 38px; color: #d6cce2; }
+
+  #s0a { top: 700px; }
+  #s0a div { font-size: 120px; font-style: italic; font-weight: 700; }
+  #s0b { top: 880px; }
+  #s0b div { font-size: 52px; font-weight: 300; letter-spacing: .08em; color: #f6e3b8; }
+
+  #s8a { top: 560px; }
+  #s8a div { font-size: 110px; font-style: italic; font-weight: 700; line-height: 1.05; }
+  #s8b { top: 900px; }
+  .couple { display: flex; gap: 30px; }
+  .couple > div { width: 430px; border-radius: 36px; background: rgba(14, 10, 20, .72); border: 2px solid rgba(227, 183, 90, .55); padding: 40px 20px; }
+  .couple i { font-size: 64px; color: #e3b75a; }
+  .couple span { display: block; margin-top: 14px; font-size: 36px; font-weight: 500; }
+  .couple b { display: block; margin-top: 8px; font-family: "Playfair Display", serif; font-size: 76px; color: #f6d892; }
+</style>
+</head>
+<body>
+  <div class="layer" id="s0a"><div class="serif shadow">Some nights</div></div>
+  <div class="layer" id="s0b"><div class="shadow">are meant to be remembered forever</div></div>
+
+  <div class="layer" id="s8a"><div class="serif shadow">Bring your<br><span class="gold">plus one</span></div></div>
+  <div class="layer" id="s8b">
+    <div class="couple shadow">
+      <div><i class="bi-suit-heart-fill"></i><span>Couple</span><b>6,000</b></div>
+      <div><i class="bi-car-front"></i><span>Couple + Transport</span><b>9,000</b></div>
+    </div>
+  </div>
+
+  <div class="layer" id="s1a"><div class="kick shadow">Eldoret</div></div>
+  <div class="layer" id="s1b"><div class="serif shadow">are you<br>ready?</div></div>
+
+  <div class="layer" id="s2a"><img src="../../images/pr logo.png" alt=""><div class="kick shadow">The most glamorous night of the year</div></div>
+  <div class="layer" id="s2b"><div class="serif gold shadow">PROM<br>NIGHT</div></div>
+  <div class="layer" id="s2c"><div class="shadow">2026</div><p class="shadow">Boma Inn, Eldoret</p></div>
+
+  <div class="layer big" id="s3a"><div class="kick shadow">Walk the</div><h2 class="shadow">Red<br>Carpet</h2></div>
+  <div class="layer big" id="s3b"><div class="kick shadow">Enjoy a</div><h2 class="shadow">Three<br>Course<br>Dinner</h2></div>
+  <div class="layer big" id="s3c"><div class="kick shadow">Dance all night</div><h2 class="shadow gold">Live<br>DJ</h2></div>
+
+  <div class="layer" id="s4a"><div class="serif shadow">Who will wear the crown?</div></div>
+  <div class="layer" id="s4b"><div class="serif gold shadow">Mr &amp; Miss<br>Prom</div><p class="shadow">Register solo or as a couple</p></div>
+
+  <div class="layer" id="s5a"><div class="kick shadow">Tickets from</div><div class="serif gold shadow">KSh 3,500</div></div>
+  <div class="layer" id="s5b">
+    <div class="tiers shadow">
+      <div><span><i class="bi-person"></i>Individual</span><b>3,500</b></div>
+      <div><span><i class="bi-car-front"></i>Individual + Transport</span><b>5,500</b></div>
+      <div><span><i class="bi-people"></i>Couple</span><b>6,000</b></div>
+      <div><span><i class="bi-gem"></i>Couple + Transport</span><b>9,000</b></div>
+    </div>
+  </div>
+
+  <div class="layer" id="s6a"><div class="date shadow"><div class="day"><b>10</b><span>DEC</span></div></div></div>
+  <div class="layer" id="s6b"><div class="shadow"><i class="bi-calendar-event"></i>Thursday, 6:00 PM</div><div class="shadow"><i class="bi-geo-alt-fill"></i>Boma Inn, Eldoret</div></div>
+
+  <div class="layer" id="s7a"><div class="pill">Limited seats</div><h2 class="serif shadow">Get your<br><span class="gold">ticket now</span></h2></div>
+  <div class="layer" id="s7b">
+    <div class="qr shadow"><img src="../../images/zenlipa-qr.png" alt=""></div>
+    <div class="t1 shadow">Scan to pay</div>
+    <div class="t2 shadow">prom2026.online</div>
+    <div class="t3 shadow">0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146</div>
+  </div>
+
+<script>
+  const el = document.getElementById(location.hash.slice(1));
+  if (el) el.classList.add("on");
+</script>
+</body>
+</html>

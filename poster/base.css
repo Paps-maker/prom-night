@@ -1,0 +1,18 @@
+/* Shared base for all poster and ticket designs */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0910; }
+.page { position: relative; overflow: hidden; isolation: isolate; font-family: "Outfit", sans-serif; }
+.serif { font-family: "Playfair Display", serif; }
+.cover { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: -3; }
+.layer { position: absolute; inset: 0; z-index: -2; }
+.gold-text {
+  background: linear-gradient(135deg, #fbe3a6 0%, #e3b75a 45%, #b8862f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.qr { background: #fff; border-radius: 14px; padding: 10px; display: inline-block; }
+.qr img { display: block; image-rendering: pixelated; }
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #f6d892; box-shadow: 0 0 12px 3px rgba(246, 216, 146, .7); }
+.hashtag { position: absolute; left: 0; right: 0; bottom: 16px; z-index: 5; text-align: center; font: 600 18px "Outfit", sans-serif; letter-spacing: .14em; color: rgba(255, 255, 255, .55); }
+.hashtag.dark { color: rgba(42, 29, 18, .55); }

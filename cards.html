@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Make your own Prom Night 2026 card: invite a friend by name, tell everyone you're going, or ask for votes for Mr & Miss Prom.">
+    <meta name="theme-color" content="#0b0910">
+
+    <meta property="og:title" content="Make your Prom Night 2026 card">
+    <meta property="og:description" content="Invite a friend by name, share that you're going, or ask for votes for Mr & Miss Prom.">
+    <meta property="og:image" content="https://prom2026.online/images/og-preview.jpg">
+    <meta property="og:url" content="https://prom2026.online/cards.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Make Your Card | Prom Night 2026</title>
+
+    <link rel="icon" type="image/png" href="images/pr logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .maker-top { position: sticky; top: 0; z-index: 10; background: rgba(11, 9, 16, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .maker-top .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .maker { padding: 40px 0 80px; }
+        .maker .section-head { margin-bottom: 30px; }
+        .maker-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; align-items: start; }
+        .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 22px; }
+        .tab { padding: 14px 8px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .tab i { font-size: 22px; color: var(--gold); }
+        .tab[aria-selected="true"] { border-color: var(--gold); background: rgba(227, 183, 90, .12); color: var(--text); }
+        .opt[hidden] { display: none; }
+        select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+        .actions { display: grid; gap: 10px; margin-top: 8px; }
+        .hint { font-size: 14px; color: var(--text-dim); margin-top: 14px; }
+        .preview { position: sticky; top: 90px; }
+        .preview canvas { width: 100%; height: auto; display: block; border-radius: 20px; box-shadow: var(--shadow); background: var(--surface); }
+        @media (max-width: 860px) {
+            .maker-grid { grid-template-columns: minmax(0, 1fr); }
+            .preview { position: static; order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="maker-top">
+        <div class="container">
+            <a class="brand" href="index.html"><img src="images/pr logo.png" alt="">PROM<span>NIGHT</span></a>
+            <a href="index.html#tickets" class="btn btn-gold btn-sm"><i class="bi-ticket-perforated"></i> Buy Ticket</a>
+        </div>
+    </header>
+
+    <main class="maker">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Card maker</div>
+                <h2 class="section-title">Make your <em>card</em></h2>
+                <p class="section-sub">Pick a card, add a name and share it on WhatsApp, Instagram or TikTok.</p>
+            </div>
+
+            <div class="maker-grid">
+                <form class="form-card" id="cardForm" autocomplete="off">
+                    <div class="tabs" role="tablist">
+                        <button type="button" class="tab" role="tab" data-mode="invite" aria-selected="true"><i class="bi-envelope-heart"></i>Invite a friend</button>
+                        <button type="button" class="tab" role="tab" data-mode="going" aria-selected="false"><i class="bi-patch-check"></i>I&rsquo;m going</button>
+                        <button type="button" class="tab" role="tab" data-mode="vote" aria-selected="false"><i class="bi-gem"></i>Vote for me</button>
+                    </div>
+
+                    <div class="field">
+                        <label for="name" id="nameLabel">Your friend&rsquo;s name</label>
+                        <input class="input" id="name" maxlength="24" placeholder="e.g. Brian">
+                    </div>
+
+                    <div class="field opt" data-for="invite">
+                        <label for="from">Your name (optional)</label>
+                        <input class="input" id="from" maxlength="24" placeholder="Sent with love by...">
+                    </div>
+
+                    <div class="field opt" data-for="vote" hidden>
+                        <label for="category">Category</label>
+                        <select class="input" id="category">
+                            <option>Miss Prom 2026</option>
+                            <option>Mr Prom 2026</option>
+                            <option>Prom Couple 2026</option>
+                        </select>
+                    </div>
+
+                    <div class="field opt" data-for="vote" hidden>
+                        <label for="photo">Your photo (optional)</label>
+                        <input class="input" id="photo" type="file" accept="image/*">
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" class="btn btn-gold btn-block" id="shareBtn"><i class="bi-share"></i> Share card</button>
+                        <button type="button" class="btn btn-outline btn-block" id="downloadBtn"><i class="bi-download"></i> Download card</button>
+                    </div>
+                    <p class="hint">Your photo stays on your phone. Nothing is uploaded.</p>
+                </form>
+
+                <div class="preview">
+                    <canvas id="card" width="1080" height="1350" aria-label="Card preview"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/card-kit.js"></script>
+    <script>
+        const canvas = document.getElementById("card");
+        const kit = CardKit.create(canvas);
+        const { W, H, text, pill, gold } = kit;
+
+        const MODES = {
+            invite: { label: "Your friend’s name", placeholder: "e.g. Brian", photo: "images/countdown/pexels-30767993.jpg", base: "#1a050b", file: "prom-night-invite" },
+            going: { label: "Your name", placeholder: "e.g. Wanjiru", photo: "images/countdown/pexels-35764838.jpg", base: "#0e0a14", file: "prom-night-im-going" },
+            vote: { label: "Your name", placeholder: "e.g. Faith Chebet", photo: "images/countdown/pexels-29069190.jpg", base: "#120a1c", file: "prom-night-vote-for-me" },
+        };
+        let mode = "invite";
+        let userPhoto = null;
+        const $ = id => document.getElementById(id);
+
+        async function draw() {
+            const m = MODES[mode];
+            const name = $("name").value.trim();
+            await document.fonts.ready;
+            const bg = mode === "vote" && userPhoto ? userPhoto : await CardKit.loadImage(m.photo);
+            await kit.backdrop(bg, m.base);
+
+            if (mode === "invite") {
+                text(name ? `${name},` : "Dear friend,", 640, 130, "400 {s}px 'Great Vibes'", "#ffd0d8");
+                text("YOU’RE INVITED TO", 730, 38, "500 {s}px Outfit", "#fff", { spacing: .3 });
+                text("Prom Night", 880, 150, "800 {s}px 'Playfair Display'", gold(780, 900));
+                text("2026", 955, 48, "300 {s}px Outfit", "#fff", { spacing: .5 });
+                const from = $("from").value.trim();
+                if (from) text(`With love, ${from}`, 1040, 40, "italic 600 {s}px 'Playfair Display'", "#f6e3b8");
+                await kit.footer("Grab your ticket", "From KSh 3,500");
+            } else if (mode === "going") {
+                pill("TICKET SECURED", 560, gold(520, 580), "#1a1206");
+                text(name || "I", 700, 120, "800 {s}px 'Playfair Display'", "#fff");
+                text(name ? "IS GOING TO" : "AM GOING TO", 780, 38, "500 {s}px Outfit", "#fff", { spacing: .3 });
+                text("Prom Night", 920, 150, "800 {s}px 'Playfair Display'", gold(820, 940));
+                text("See you on the red carpet", 1010, 42, "italic 600 {s}px 'Playfair Display'", "#f6e3b8");
+                await kit.footer("Are you coming?", "Get yours from KSh 3,500");
+            } else {
+                pill("VOTE FOR ME", 600, "#e2457a", "#fff");
+                text(name || "Your name", 750, 120, "800 {s}px 'Playfair Display'", gold(660, 760));
+                text("FOR", 820, 32, "500 {s}px Outfit", "#fff", { spacing: .4 });
+                text($("category").value, 910, 76, "italic 700 {s}px 'Playfair Display'", "#fff");
+                text("Every vote counts. Thank you!", 990, 36, "300 {s}px Outfit", "#e9dcf5");
+                await kit.footer("Vote at prom2026.online", "Mr & Miss Prom 2026");
+            }
+            await CardKit.cache(canvas);
+        }
+
+        function setMode(next) {
+            mode = next;
+            document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.mode === mode));
+            document.querySelectorAll(".opt").forEach(o => o.hidden = o.dataset.for !== mode);
+            $("nameLabel").textContent = MODES[mode].label;
+            $("name").placeholder = MODES[mode].placeholder;
+            draw();
+        }
+
+        function fileName() {
+            const name = CardKit.slug($("name").value);
+            return `${MODES[mode].file}${name ? "-" + name : ""}.png`;
+        }
+
+        document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => setMode(t.dataset.mode)));
+        ["name", "from", "category"].forEach(id => $(id).addEventListener("input", draw));
+        $("photo").addEventListener("change", async e => { userPhoto = await CardKit.readPhoto(e.target.files[0]); draw(); });
+        $("downloadBtn").addEventListener("click", () => CardKit.download(canvas, fileName()));
+        $("shareBtn").addEventListener("click", () => {
+            CardKit.share(canvas, fileName(), "Prom Night 2026 ✨ Thursday 10 December, Boma Inn Eldoret. Tickets: https://prom2026.online " + CardKit.HASHTAG);
+        });
+
+        // Links like cards.html?card=going&name=Wanjiru open with the card filled in
+        const params = new URLSearchParams(location.search);
+        if (params.get("name")) $("name").value = params.get("name").slice(0, 24);
+        setMode(MODES[params.get("card")] ? params.get("card") : "invite");
+    </script>
+</body>
+
+</html>

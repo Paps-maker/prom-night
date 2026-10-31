@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prom Night 2026 Print</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600;1,700&display=swap" rel="stylesheet">
+<link href="../../css/bootstrap-icons.css" rel="stylesheet">
+<link href="../base.css" rel="stylesheet">
+<style>
+  /* Print to PDF with print.html#a3 (poster) or print.html#a5 (two sided flyer, same design at half size) */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff; }
+  .sheet { width: 1123px; height: 1587px; position: relative; overflow: hidden; break-after: page; }
+  .a5 .sheet { zoom: .5; }
+  .page { width: 100%; height: 100%; color: #fff; background: #0e0a14; }
+  .content { position: relative; height: 100%; padding: 70px 80px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  /* Front */
+  .front .cover { background-image: url("../../images/royal.jpg"); bottom: 40%; background-position: center 30%; }
+  .front .layer { background: linear-gradient(180deg, rgba(14, 10, 20, .3), rgba(14, 10, 20, .35) 30%, rgba(14, 10, 20, .85) 50%, #0e0a14 60%); }
+  .top { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .top img { width: 92px; height: 92px; border-radius: 50%; border: 3px solid #e3b75a; object-fit: cover; }
+  .top .where { padding: 12px 26px; border-radius: 999px; background: rgba(0, 0, 0, .5); border: 1px solid rgba(255, 255, 255, .35); font-size: 24px; font-weight: 600; }
+  .top .where i { color: #e3b75a; margin-right: 8px; }
+  .kick { margin-top: 250px; font-size: 26px; letter-spacing: .35em; text-transform: uppercase; font-weight: 600; color: #f6e3b8; padding-left: .35em; }
+  .front h1 { font-size: 200px; font-weight: 900; line-height: .86; margin-top: 16px; filter: drop-shadow(0 12px 40px rgba(0, 0, 0, .6)); }
+  .year { font-size: 64px; letter-spacing: .6em; font-weight: 300; padding-left: .6em; margin-top: 16px; }
+  .when { margin-top: 40px; display: flex; border-top: 1px solid rgba(255, 255, 255, .3); border-bottom: 1px solid rgba(255, 255, 255, .3); }
+  .when div { padding: 22px 36px; font-size: 32px; font-weight: 500; }
+  .when div + div { border-left: 1px solid rgba(255, 255, 255, .3); }
+  .when i { color: #e3b75a; margin-right: 12px; }
+  .chips { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 960px; }
+  .chips span { padding: 14px 26px; border-radius: 999px; border: 1px solid rgba(227, 183, 90, .5); background: rgba(255, 255, 255, .05); font-size: 25px; }
+  .chips i { color: #e3b75a; margin-right: 10px; }
+  .buy { margin-top: auto; width: 100%; display: flex; align-items: center; gap: 40px; padding: 34px 44px; border-radius: 34px; background: rgba(255, 255, 255, .05); border: 2px solid rgba(227, 183, 90, .55); text-align: left; }
+  .buy .qr { padding: 14px; border-radius: 20px; }
+  .buy .qr img { width: 210px; height: 210px; }
+  .buy .t1 { font-size: 22px; letter-spacing: .3em; text-transform: uppercase; color: #e3b75a; font-weight: 700; }
+  .buy .t2 { font-family: "Playfair Display", serif; font-size: 66px; font-weight: 800; line-height: 1.1; margin: 6px 0 10px; }
+  .buy .t3 { font-size: 26px; color: #d6cce2; line-height: 1.5; }
+  .buy .t3 b { color: #fff; }
+
+  /* Back */
+  .back .content { align-items: stretch; text-align: left; }
+  .back .eyebrow { font-size: 24px; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: #e3b75a; }
+  .back h2 { font-size: 92px; font-weight: 800; line-height: 1; margin-top: 10px; }
+  .back h2 em { font-style: italic; }
+  .incl { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .incl div { display: flex; align-items: center; gap: 18px; padding: 20px 24px; border-radius: 20px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .12); font-size: 27px; }
+  .incl i { font-size: 32px; color: #e3b75a; width: 38px; text-align: center; }
+  .tiers { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tiers div { padding: 26px 18px; border-radius: 24px; text-align: center; background: rgba(20, 15, 28, .9); border: 1px solid rgba(255, 255, 255, .14); }
+  .tiers div.hot { border: 2px solid #e3b75a; background: linear-gradient(160deg, rgba(227, 183, 90, .2), rgba(20, 15, 28, .9)); }
+  .tiers span { display: block; font-size: 23px; font-weight: 500; min-height: 62px; }
+  .tiers b { display: block; margin-top: 8px; font-family: "Playfair Display", serif; font-size: 52px; color: #f6d892; }
+  .tiers small { font-size: 18px; color: #a99fb7; }
+  .prog { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px 24px; }
+  .prog div { font-size: 24px; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+  .prog b { display: block; color: #f6d892; font-size: 22px; }
+  .back .buy { margin-top: auto; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="page front">
+  <div class="hashtag" style="bottom:22px;font-size:20px">#PromNightEldoret2026</div>
+      <div class="cover"></div>
+      <div class="layer"></div>
+      <span class="spark" style="top:220px;left:170px"></span><span class="spark" style="top:340px;left:960px"></span><span class="spark" style="top:560px;left:110px;transform:scale(.6)"></span>
+      <div class="content">
+        <div class="top"><img src="../../images/pr logo.png" alt=""><div class="where"><i class="bi-geo-alt-fill"></i>Boma Inn, Eldoret</div></div>
+        <div class="kick">The most glamorous night of the year</div>
+        <h1 class="serif gold-text">PROM<br>NIGHT</h1>
+        <div class="year">2026</div>
+        <div class="when">
+          <div><i class="bi-calendar-event"></i>Thursday, 10 December</div>
+          <div><i class="bi-clock"></i>6:00 PM</div>
+        </div>
+        <div class="chips">
+          <span><i class="bi-stars"></i>Red carpet</span><span><i class="bi-egg-fried"></i>Three course dinner</span>
+          <span><i class="bi-music-note-beamed"></i>Live DJ</span><span><i class="bi-gem"></i>Mr &amp; Miss Prom crowning</span>
+          <span><i class="bi-camera"></i>Photo booth</span><span><i class="bi-car-front"></i>Transport available</span>
+        </div>
+        <div class="buy">
+          <div class="qr"><img src="../../images/zenlipa-qr.png" alt=""></div>
+          <div>
+            <div class="t1">Scan to get your ticket</div>
+            <div class="t2">From <span class="gold-text">KSh 3,500</span></div>
+            <div class="t3"><b>prom2026.online</b><br>0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet back-sheet">
+    <div class="page back">
+  <div class="hashtag" style="bottom:22px;font-size:20px">#PromNightEldoret2026</div>
+      <span class="spark" style="top:120px;left:960px"></span><span class="spark" style="top:240px;left:880px;transform:scale(.6)"></span>
+      <div class="content">
+        <div class="eyebrow">Prom Night 2026</div>
+        <h2 class="serif">Everything your <em class="gold-text">ticket includes</em></h2>
+        <div class="incl">
+          <div><i class="bi-stars"></i>Red carpet entrance</div>
+          <div><i class="bi-egg-fried"></i>Three course buffet dinner</div>
+          <div><i class="bi-cup-straw"></i>Drinks and mocktails</div>
+          <div><i class="bi-music-note-beamed"></i>Live DJ and dance floor</div>
+          <div><i class="bi-trophy"></i>Awards and crowning</div>
+          <div><i class="bi-controller"></i>Games and performances</div>
+          <div><i class="bi-camera"></i>Themed photo booth</div>
+          <div><i class="bi-people"></i>Meet new friends</div>
+        </div>
+        <div class="tiers">
+          <div><span>Individual</span><b>3,500</b><small>KSh · 1 guest</small></div>
+          <div class="hot"><span>Individual + Transport</span><b>5,500</b><small>KSh · 1 guest</small></div>
+          <div><span>Couple</span><b>6,000</b><small>KSh · 2 guests</small></div>
+          <div><span>Couple + Transport</span><b>9,000</b><small>KSh · 2 guests</small></div>
+        </div>
+        <div class="prog">
+          <div><b>6:00 PM</b>Red carpet</div>
+          <div><b>7:00 PM</b>Dinner</div>
+          <div><b>7:45 PM</b>Games</div>
+          <div><b>8:30 PM</b>Talent showcase</div>
+          <div><b>9:45 PM</b>The crowning</div>
+          <div><b>10:30 PM</b>Dance party</div>
+        </div>
+        <div class="buy">
+          <div class="qr"><img src="../../images/zenlipa-qr.png" alt=""></div>
+          <div>
+            <div class="t1">Thursday, 10 December 2026 · Boma Inn, Eldoret</div>
+            <div class="t2">Book your <span class="gold-text">seat</span></div>
+            <div class="t3"><b>Scan to pay or visit prom2026.online</b><br>0717 436 668 &nbsp;&middot;&nbsp; 0792 100 146</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  const a5 = location.hash === "#a5";
+  const style = document.createElement("style");
+  style.textContent = a5 ? "@page { size: A5; margin: 0; }" : "@page { size: A3; margin: 0; } .back-sheet { display: none; }";
+  document.head.appendChild(style);
+  if (a5) document.body.classList.add("a5");
+</script>
+</body>
+</html>
